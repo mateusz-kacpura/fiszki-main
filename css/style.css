@@ -1,0 +1,277 @@
+/* Gdańsk 
+24 grudnia
+
+Wraz z kolegą realizujemy film o aborcji (17 minut),  bo tyle mamy czasu do wykorzystania na emisji w TV TRWAM. Ograliśmy Artura Ważnego (obecnie nowy biskup pomocniczy diecezji Tarnowskiej, egzorcysta który wraz z siostrą Małgorzatą prowadzą rekolekcje Winnica Racheli do kobiet po aborcji, są one oparte na standardowym programie psychologicznym zintegrowane z wrzutką proklamowania dobrej nowiny). Tematem filmu są skutki grzechu aborcji, stąd też jego tytuł "Oszukane" w kontekście fali strajków które przeszły przez Polskę. Materiał w podsumowaniu miałby wskazać drogę do pojednania się z Panem Bogiem, sobą i nienarodzonym dzieckiem po przez zachęcenie kobiet potrzebujących do uczestnictwa w rekolekcjach "Winnica Racheli".
+Chciałbym dopełnić go świadectwem osoby po aborcji, lecz te kobiety które uczestniczą w tych rekolekcjach nie są jeszcze gotowe by się tym dzielić. Jedna siostra Wiesława ma takie doświadczenie i dzieliła się między innymi tym w "Radiu Niepokalanów", ale nie mamy do niej kontaktu. 
+
+*/
+
+body {
+    background-color: #23242e;
+    color: white;
+    font-size: 2.2rem;
+    margin: 0px;
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+.panel {
+    background-color: #65847b;
+    width: 70%;
+    height: 50vw;
+    max-height: 500px;
+    margin: 20px auto;
+}
+
+.select {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.select button {
+    flex-basis: 20%;
+    flex-grow: 1;
+    box-sizing: border-box;
+    margin: 10px 70px;
+    padding: 30px 60px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 3px white solid;
+    background-color: #4c7689;
+    cursor: pointer;
+    color: white;
+    font-size: 1.6rem;
+}
+.select button.active{
+     background-color: #26414d;
+     border: 3px #a2bdbe solid;
+}
+.login {
+    width: 80%;
+    margin: 50px auto;
+    box-sizing: border-box;
+    padding: 70px 20px;
+    border: 2px solid white;
+    background-color: #3b5531;
+}
+
+.log_out {
+    display: none;
+}
+
+.menu {
+    transition: 1s all ease-in-out;
+    width: 100%;
+    height:  100vh;
+    position: absolute;
+    left: 90%;/*90*/
+    top: 0%;
+}
+
+.menu.active {
+    left: 0%;
+}
+
+.menubutton {
+    position: relative;
+    float: left;
+    width: 10%;
+    height: 100%;
+    background-color: #ffffff;
+    -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    cursor: pointer;
+}
+
+i {
+    color: #2d676f;
+    font-size: 60px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    
+}
+.menu-content {
+    position: relative;
+    float: left;
+    background-color: #407780;
+    width: 90%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.menu-content div{
+    flex-basis: 100%;
+    text-align: center;
+     border-top: 1px white solid;
+    font-size: 1.6rem;
+    line-height:29px;
+}
+menu-content div:nt{
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: orangered;
+}
+
+
+.panel span{
+    display: block;
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    border: 1px black solid;
+    line-height: 17vh;
+    text-align: center;
+    transition: all 1s linear;
+}
+.panel span:nth-child(2){
+    opacity: 0;
+}
+.panel.active span:nth-child(2){
+    opacity: 1;
+}
+.menu h2{
+    margin: 1px;
+    font-size: 2.0rem;
+     background-color: #26717e;
+}
+.menu h1{
+    margin: 1px;
+    font-size: 2.0rem;
+}
+.menu button{
+display: inline-block;
+}
+.result{
+    background-color: #104b55;
+    width: 100%;
+    min-height: 50px
+}
+.menu label{
+    background-color: #104b55;
+    border: 1px white solid;
+    padding: 2px;
+    margin-left: 10px;
+}
+.random_button{
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background-color: #104b55;
+    left: 50%;
+    bottom: 2%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    font-size: 100px;
+    cursor: pointer;
+}
+.random_button i{
+color:  white;
+}
+.menu a{
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 2px;
+    background-color: #104b55;
+}
+ @media only screen and (max-width: 800px) {
+ html {
+          font-size: 50%;
+            }
+     .select button {
+         padding: 10px 20px;
+
+     }
+     .icon-cog-alt{
+         font-size: 30px;
+     }
+     .menu-content div{
+          font-size: 1.5rem;
+    line-height:25px;
+     }
+     .menu h2{
+     font-size: 1.8rem;
+        margin: 0px;
+     }
+     .result{
+         min-height: 30px
+     }
+     .menu button{
+         font-size: 1.5rem;
+     }
+}
+
+.przycisk {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.przycisk1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.przycisk1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.przycisk2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.przycisk2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.przycisk3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.przycisk3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.przycisk4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.przycisk4:hover {background-color: #e7e7e7;}
+
+.przycisk5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.przycisk5:hover {
+  background-color: #555555;
+  color: white;
+}
