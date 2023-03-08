@@ -1,12 +1,18 @@
 <?php
-include('baza.php');
-if(!$connect){
-    header('location: ./index.php');
-}
-    global $connect;
+
+require_once('polaczeniePDO.php');
+
+try
+{
     $db_name=$_POST['word_operation'];   
-    $query = "drop table $db_name";
-    $db = mysqli_select_db($connect,'fiszki_nauka_slowek');
-    $result=mysqli_query($connect,$query);
-header('location: ./fiszki.php');
-?>s
+    $drop_table = "drop table $db_name";
+    $pdo ->query($drop_table) or die('Błąd zapytania');
+    header('location: ./fiszki.php');
+
+}
+catch(PDOException $e)
+{
+   echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+   header('location: ./index.php');
+}
+?>

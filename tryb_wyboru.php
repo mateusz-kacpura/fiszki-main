@@ -73,114 +73,145 @@ case 'dodaj_zestaw':
        ---------------------------------  */
        // formularz który zdefinuje zmienną db_name
        //  $query = "CREATE TABLE $db_name ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,    PRIMARY KEY  (id)) ENGINE = InnoDB";
-
-    $db_name = $_POST['databasename'];
+    $flaga = 1;
     
-    if (empty($db_name)){
+    if (empty($_POST['databasename'])){
         echo "Taka nazwa bazy danych nie istnieje";
-        //header("Location: tryb_wyboru.php");
+        $flaga = 0;
     }
-     
-    try
-    {
-    $query = "CREATE TABLE $db_name ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,    PRIMARY KEY  (id)) ENGINE = InnoDB";
-    $pdo ->query($query) or die('Błąd zapytania CREATE TABLE');
-    $querty = "INSERT INTO info_table (name_table, flaga) VALUES ('$db_name', '0')";
-    $pdo ->query($querty) or die('Błąd zapytania INSERT INTO');
     
-    header("Location: tryb_wyboru.php");
-      
-    }
-    catch(PDOException $e)
+    if($flaga == 1)
     {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_wyboru.php">wróć</a>';
+        try
+        {
+            $db_name = $_POST['databasename'];
+            $query = "CREATE TABLE $db_name ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,    PRIMARY KEY  (id)) ENGINE = InnoDB";
+            $pdo ->query($query) or die('Błąd zapytania CREATE TABLE');
+            $querty = "INSERT INTO info_table (name_table, flaga) VALUES ('$db_name', '0')";
+            $pdo ->query($querty) or die('Błąd zapytania INSERT INTO');
+            
+            header("Location: tryb_wyboru.php");
+        
+        }
+        catch(PDOException $e)
+        {
+            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+            echo '</br><a href="tryb_wyboru.php">wróć</a>';
+        }
     }
     
 break;
 case 'usun_zestaw':
     // defincja db_name przychodzi z formlarza 
-    $db_name = $_POST['databasename'];
+    $flaga = 1;
 
-    if (empty($db_name)){
+    if (empty($_POST['databasename']))
+    {
         echo "Taka nazwa bazy danych nie istnieje";
+        $flaga = 0;
     }
-     
-    try
+
+    if ($flaga == 1)
     {
-    $querty = "DROP table $db_name";
-    $pdo ->query($querty) or die('Błąd zapytania DROP');
-    $querty = "DELETE FROM info_table WHERE name_table = '$db_name'";
-    $pdo ->query($querty) or die('Błąd zapytania DELETE');
+        $db_name = $_POST['databasename'];   
+        try
+        {
+        $querty = "DROP table $db_name";
+        $pdo ->query($querty) or die('Błąd zapytania DROP');
+        $querty = "DELETE FROM info_table WHERE name_table = '$db_name'";
+        $pdo ->query($querty) or die('Błąd zapytania DELETE');
+        
+        header("Location: tryb_wyboru.php");
+        
+        }
+        catch(PDOException $e)
+        {
+        echo 'Nie udało się znaleść danego zestawu w bazie danych: ';
+        }
+    }
     
-    header("Location: tryb_wyboru.php");
-      
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_wyboru.php">wróć</a>';
-    }
     
 break;
 case 'wyszukaj_zestaw':
-    // defincja db_name przychodzi z formlarza 
-    $db_name = $_POST['databasename'];
 
-    if (empty($db_name)){
+    // defincja db_name przychodzi z formlarza
+    $flaga = 1;
+
+    if (empty($_POST['databasename']))
+    {
         echo "Taka nazwa bazy danych nie istnieje";
+        $flaga = 0;
     }
      
-    try
+    if($flaga == 1)
     {
-    $querty = "SELECT table_name  FROM information_schema.tables where table_schema='fiszki_nauka_slowek' AND table_name LIKE '$db_name'";
-    $liczba = $pdo ->query($querty) or die('Nie znaleziono wybranej bazy danych');
-    $wykonanie = $pdo->prepare($querty);
-    $wykonanie->execute();
-    $licznik_id=$wykonanie->rowCount();
-        printf("<h2>WYSZUKANA BAZA DANYCH</h2>");
-                    while($row = $liczba->fetch())
-                              {                 
-        printf("<div class='select'><button>".$row[0]."</button></div>");
-                              }
+        $db_name = $_POST['databasename'];
+        try 
+        {
+        $querty = "SELECT table_name  FROM information_schema.tables where table_schema='fiszki_nauka_slowek' AND table_name LIKE '$db_name'";
+        $liczba = $pdo ->query($querty) or die('Nie znaleziono wybranej bazy danych');
+        $wykonanie = $pdo->prepare($querty);
+        $wykonanie->execute();
+        $licznik_id=$wykonanie->rowCount();
+            printf("<h2>WYSZUKANA BAZA DANYCH</h2>");
+                        while($row = $liczba->fetch())
+                        {                 
+                            printf("<div class='select'><button>".$row[0]."</button></div>");
+                        }
 
+        }
+        catch(PDOException $e)
+        {
+            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+            echo '</br><a href="tryb_wyboru.php">wróć</a>';
+        }
     }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_wyboru.php">wróć</a>';
-    }
+        
 break;
 case 'importuj_baze_danych':
-echo "import";
-  
-$nazwa_importowanej_tabeli = $_POST["nazwa_importowanej_tabeli"];
 
-   try
+    $flaga = 1;
+
+    if (empty($_POST["nazwa_importowanej_tabeli"]))
     {
-            $utworz_miejsce_na_importowana_tabele = "CREATE TABLE $nazwa_importowanej_tabeli ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,  zdanie VARCHAR(90) CHARACTER SET utf8 COLLATE utf8_general_ci  , flaga INT NOT NULL , PRIMARY KEY  (id)) ENGINE = InnoDB";
-            $pdo ->query($utworz_miejsce_na_importowana_tabele) or die('Błąd zapytania CREATE TABLE');
-            $querty = "INSERT INTO info_table (name_table, flaga) VALUES ('$nazwa_importowanej_tabeli', '0')";
-            $pdo ->query($querty) or die('Błąd zapytania INSERT INTO');
+        $flaga = 0;
     }
-   catch(PDOException $e)
+
+    if ($flaga == 1)
     {
-        echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-    }
+        $nazwa_importowanej_tabeli = $_POST["nazwa_importowanej_tabeli"];
+        // tworze miejsce na importowane dane
+        try
+            {
+                    $utworz_miejsce_na_importowana_tabele = "CREATE TABLE $nazwa_importowanej_tabeli ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,  zdanie VARCHAR(90) CHARACTER SET utf8 COLLATE utf8_general_ci  , flaga INT NOT NULL , PRIMARY KEY  (id)) ENGINE = InnoDB";
+                    $pdo ->query($utworz_miejsce_na_importowana_tabele) or die('Błąd zapytania CREATE TABLE');
+                    $querty = "INSERT INTO info_table (name_table, flaga) VALUES ('$nazwa_importowanej_tabeli', '0')";
+                    $pdo ->query($querty) or die('Błąd zapytania INSERT INTO');
+            }
+        catch(PDOException $e)
+            {
+                echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+            }
+        
+        // czyta plik i wykonuje import
+        $csvFile=$_FILES["file"]["tmp_name"];
+        $handle = fopen($csvFile, "r");
+        if ($handle) {
+            while (($line = fgetcsv($handle)) !== false) {  
+            try 
+                {
+                    $stmt = $pdo->prepare("INSERT INTO $nazwa_importowanej_tabeli (v1, v2, weight, zdanie, flaga) VALUES ('$line[0]','$line[1]','$line[2]','$line[3]','$line[4]')");
+                    $stmt->execute([$line[0], $line[1], $line[2], $line[3], $line[4]]);
+                } 
+                catch (Exception $ex) 
+                {
+                    echo $ex->getmessage();
+                }
+            }
+            fclose($handle);
 
-
-$csvFile=$_FILES["file"]["tmp_name"];
-$handle = fopen($csvFile, "r");
-if ($handle) {
-  while (($line = fgetcsv($handle)) !== false) {  
-    try {
-      $stmt = $pdo->prepare("INSERT INTO $nazwa_importowanej_tabeli (v1, v2, weight, zdanie, flaga) VALUES ('$line[0]','$line[1]','$line[2]','$line[3]','$line[4]')");
-      $stmt->execute([$line[0], $line[1], $line[2], $line[3], $line[4]]);
-    } catch (Exception $ex) {
-      echo $ex->getmessage();
     }
-  }
-  fclose($handle);
+   
 } else { echo "ERROR OPENING $csvFile"; }
 
 break;

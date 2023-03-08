@@ -4,6 +4,113 @@ require_once('polaczeniePDO.php');
 if(!$connect){
     header('location: index.php');//przekierowanie do logowania
 }
+
+function filtruj($zmienna) {
+        $zmienna = stripslashes($zmienna); // usuwamy slashe
+
+// usuwamy spacje, tagi html oraz niebezpieczne znaki
+    return htmlspecialchars(trim($zmienna));
+}
+
+function formularz_dodaj($tabela){
+      echo '<div class="nowe_slowo"><form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=dodaj">
+            Wyrażenie polskie:
+            <input type="text" name="dodaj_element1" style="width: 250px">
+        </br>
+            Wrażenie hiszpańskie:
+            <input type="text" name="dodaj_element2" style="width: 250px">
+        </br>
+            Przykładowe zdanie:
+            <input type="text" name="dodaj_element3" style="width: 250px">
+        </br>
+            <input type="submit" name="submit" value="Wyślij">&nbsp;
+        <input type="reset" value="Wyczyść formularz"></form></br>
+        
+    </div><div class="nowe_slowo">
+    <form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=wyszukaj">
+    Wyszukaj słowo:
+            <input type="text" name="slowo" style="width: 250px">
+        </br>
+            <input type="submit" name="submit" value="Wyślij">&nbsp;
+            <input type="reset" value="Wyczyść formularz"></form>
+    
+    </div>';
+}
+  
+function wyswietlam($tabela, $row){
+$id = $row['id'];
+    
+   echo '<div class="arkusz">';
+    
+   echo '
+         <div class="edytuj">
+         <form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=edytuj&id='.$row['id'].'">
+         <input type="text" name="a'.$id.'" placeholder="Wyrażenie polskie:" value="'.$row['v1'].'">
+         <input type="text" name="b'.$id.'" placeholder="Wrażenie angielskie:"  value="'.$row['v2'].'">
+         <input type="text" name="c'.$id.'" placeholder="Przykładowe zdanie" value="'.$row['zdanie'].'">
+         <input type="submit" name="submit" class="przycisk przycisk1" value="Edytuj!"></form></div>';
+		
+   echo '   
+         <div class="usun"><form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=usun&id='.$row['id'].'">
+         <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!"></form></div>
+                                                                                    ';
+                                                                                    
+   echo '
+         </div>
+                ';                                                                                    
+}
+
+function wyswietl_nazwe_zestawu($tabela, $pdo){                    
+    try
+    {
+        $querty = "SELECT name_table, flaga FROM info_table WHERE name_table = '$tabela'";
+        $flaga = $pdo ->query($querty) or die('Błąd zapytania SELECT');
+        $row = $flaga->fetch();
+        //echo $tabela. " zmodyfikowano na 0 czyli aktywny";
+        if ($row['flaga'] == 1){
+                echo '
+                   <div class="nowe_slowo">
+                   <div class="select_zestaw">
+                   <div class="wybrany_zestaw_zielony"><h2>'.$tabela.'</h2>
+                     </div>
+                    </div> 
+                   </div>
+                    
+                    ';
+        } else if ($row['flaga'] == 0)   {
+                echo '
+                   <div class="nowe_slowo">
+                   <div class="select_zestaw">
+                   <div class="wybrany_zestaw_czerwony"><h2>'.$tabela.'</h2>
+                     </div>
+                    </div> 
+                   </div>
+                    
+                    ';
+        }      
+        
+       
+    }
+    catch(PDOException $e)
+    {
+       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
+    }
+                    
+}
+
+function przyciski_aktywuj_deaktywuj($tabela){
+        echo '
+                   <div class="nowe_slowo">
+                   <h2>'.$tabela.'</h2>
+                   
+                    <button id="aktywuj" name="aktywuj" class="przycisk przycisk1">Aktywuj</button>
+                    <button id="deaktywuj" name"deaktywuj" class="przycisk przycisk3">Deaktywuj</button>
+                   </div>
+                    
+                    '; 
+
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -260,118 +367,6 @@ break;
 
 ?>
 </body>
-
-<?
-
-function filtruj($zmienna) {
-    if (get_magic_quotes_gpc())
-        $zmienna = stripslashes($zmienna); // usuwamy slashe
-
-// usuwamy spacje, tagi html oraz niebezpieczne znaki
-    return htmlspecialchars(trim($zmienna));
-}
-
-function formularz_dodaj($tabela){
-      echo '<div class="nowe_slowo"><form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=dodaj">
-            Wyrażenie polskie:
-            <input type="text" name="dodaj_element1" style="width: 250px">
-        </br>
-            Wrażenie hiszpańskie:
-            <input type="text" name="dodaj_element2" style="width: 250px">
-        </br>
-            Przykładowe zdanie:
-            <input type="text" name="dodaj_element3" style="width: 250px">
-        </br>
-            <input type="submit" name="submit" value="Wyślij">&nbsp;
-        <input type="reset" value="Wyczyść formularz"></form></br>
-        
-    </div><div class="nowe_slowo">
-    <form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=wyszukaj">
-    Wyszukaj słowo:
-            <input type="text" name="slowo" style="width: 250px">
-        </br>
-            <input type="submit" name="submit" value="Wyślij">&nbsp;
-            <input type="reset" value="Wyczyść formularz"></form>
-    
-    </div>';
-}
-  
-function wyswietlam($tabela, $row){
-$id = $row['id'];
-    
-   echo '<div class="arkusz">';
-    
-   echo '
-         <div class="edytuj">
-         <form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=edytuj&id='.$row['id'].'">
-         <input type="text" name="a'.$id.'" placeholder="Wyrażenie polskie:" value="'.$row['v1'].'">
-         <input type="text" name="b'.$id.'" placeholder="Wrażenie angielskie:"  value="'.$row['v2'].'">
-         <input type="text" name="c'.$id.'" placeholder="Przykładowe zdanie" value="'.$row['zdanie'].'">
-         <input type="submit" name="submit" class="przycisk przycisk1" value="Edytuj!"></form></div>';
-		
-   echo '   
-         <div class="usun"><form method="post" action="tryb_edycji.php?zestaw='.$tabela.'&'.$tabela.'=usun&id='.$row['id'].'">
-         <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!"></form></div>
-                                                                                    ';
-                                                                                    
-   echo '
-         </div>
-                ';                                                                                    
-}
-
-function wyswietl_nazwe_zestawu($tabela, $pdo){                    
-    try
-    {
-        $querty = "SELECT name_table, flaga FROM info_table WHERE name_table = '$tabela'";
-        $flaga = $pdo ->query($querty) or die('Błąd zapytania SELECT');
-        $row = $flaga->fetch();
-        //echo $tabela. " zmodyfikowano na 0 czyli aktywny";
-        if ($row['flaga'] == 1){
-                echo '
-                   <div class="nowe_slowo">
-                   <div class="select_zestaw">
-                   <div class="wybrany_zestaw_zielony"><h2>'.$tabela.'</h2>
-                     </div>
-                    </div> 
-                   </div>
-                    
-                    ';
-        } else if ($row['flaga'] == 0)   {
-                echo '
-                   <div class="nowe_slowo">
-                   <div class="select_zestaw">
-                   <div class="wybrany_zestaw_czerwony"><h2>'.$tabela.'</h2>
-                     </div>
-                    </div> 
-                   </div>
-                    
-                    ';
-        }      
-        
-       
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-    }
-                    
-}
-
-function przyciski_aktywuj_deaktywuj($tabela){
-        echo '
-                   <div class="nowe_slowo">
-                   <h2>'.$tabela.'</h2>
-                   
-                    <button id="aktywuj" name="aktywuj" class="przycisk przycisk1">Aktywuj</button>
-                    <button id="deaktywuj" name"deaktywuj" class="przycisk przycisk3">Deaktywuj</button>
-                   </div>
-                    
-                    '; 
-
-} 
-
-?>
 
 <script>
 
