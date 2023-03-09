@@ -53,13 +53,6 @@ echo '
    </div>
 </div>'
 ;
-// kolumny tabeli bazy danych
-
-$angielski = 'v1';
-$polski = 'v2';
-$przyklad = 'weight';
-$zdanie = 'zdanie';
-$flaga_baza = 'flaga';
 
 // poruszanie sie po stronie
 if(!isset($_GET[$tabela]))   {
@@ -117,19 +110,12 @@ break;
 
 ?>
 </body>
-<script src="js/activate_the_word_set.js"></script>
-<script src="js/deactivate_the_word_set.js"></script>
-<script src="js/routes.js"></script>
-
+<script src="js/action_click_activate_the_word_set.js"></script>
+<script src="js/action_click_deactivate_the_word_set.js"></script>
+<script src="js/action_click_menu_button.js"></script>
+<script src="js/click_connections.js"></script>
 
 <script>
-
-const menu_click = document.querySelector('.menubutton').addEventListener('click', (e) => {
-    document.querySelector('.menu').classList.toggle('active');
-});
-
-
-
 
 //----------Funkcje obslugujące zestaw - jeszcze nie działają i powodują błędy ---------//
 
