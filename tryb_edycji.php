@@ -35,24 +35,9 @@ $tabela = filtruj($_GET['zestaw']);
          echo "<h1>Nie można zrealizować połączenia z żadną bazą danych</h1>";
     }
     
-load_table_name($_GET['zestaw'], $pdo); 
+load_table_name($tabela, $pdo); 
 
-// menu 
-echo '
-<div class="menu">
-   <div class="menubutton"><i class="icon-cog-alt"></i>
-   </div>
-   <div class="menu-content"> 
-           <div>
-            <h1>Operacje na słówkach</h1>'
-;
-            przyciski_aktywuj_deaktywuj($tabela);
-            add_form($tabela);
-echo '
-           </div>
-   </div>
-</div>'
-;
+add_menu_right($tabela);
 
 // poruszanie sie po stronie
 if(!isset($_GET[$tabela]))   {

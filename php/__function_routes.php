@@ -3,8 +3,9 @@
 require_once "__configure_table_columns";
 require_once "active_table.php";
 require_once "add_form.php";
+require_once "add_menu_right.php";
 require_once "add_word.php";
-require_once "buttons_activate_the_word.php";
+require_once "buttons_activate_table.php";
 // require_once "deactivate_the_word_table.php"; //wywala błąd w lini 6 niezdefiniowana zmienna $table
 require_once "deactive_table.php";
 require_once "delete_table_word.php";
