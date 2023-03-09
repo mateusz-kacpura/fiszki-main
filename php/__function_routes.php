@@ -1,0 +1,12 @@
+<?php
+// require_once "activate_the_word_set.php"; //wywala błąd w lini 15 niezdefiniowana zmienna $table
+require_once "add_form.php";
+// require_once "add_word.php";
+require_once "buttons_activate_the_word.php";
+// require_once "deactivate_the_word_table.php"; //wywala błąd w lini 6 niezdefiniowana zmienna $table
+// require_once "filter.php";
+require_once "load_fishcards_all.php";
+require_once "load_table_words.php";
+require_once "load_table_name.php";
+require_once "load_word_by_id.php";
+?>

@@ -20,7 +20,6 @@ if ($flaga == 1)
     { 
         $table = $_POST['table'];
         $querty = "SELECT * FROM $table";
-        echo $querty."</br>";
         $liczba = $pdo -> query($querty);
         while ($row = $liczba->fetch()) 
         {

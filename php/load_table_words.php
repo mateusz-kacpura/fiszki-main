@@ -19,5 +19,6 @@ function load_table_words($tabela){
     {
         echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
     }
+}
 
 ?>
