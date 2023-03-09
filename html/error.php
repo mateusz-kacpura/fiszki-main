@@ -1,5 +1,5 @@
 <?php
-<!DOCTYPE html>
+echo '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,5 @@
 <body>
     <p>Brak bazy danych</p>
 </body>
-</html>
-
+</html>';
 ?>

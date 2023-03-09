@@ -67,180 +67,43 @@ if(!isset($_GET[$tabela]))   {
     $_GET[$tabela] = 'panel_administracyjny';
  
  }
- 
-function filtruj($zmienna) {
-    $zmienna = stripslashes($zmienna); // usuwamy slashe
-
-// usuwamy spacje, tagi html oraz niebezpieczne znaki
-return htmlspecialchars(trim($zmienna));
-}
 
 // zarzadzanie zestawami
 switch($_GET[$tabela]){
 
 case 'dodaj':          
-                   
-    $dodaj_element1 = filtruj($_POST['dodaj_element1']);
-    $dodaj_element2 = filtruj($_POST['dodaj_element2']);
-    $dodaj_element3 = filtruj($_POST['dodaj_element3']); 
-
-    if (empty($_POST['dodaj_element1']) || empty($_POST['dodaj_element2']))
-    {
-        exit(header("Location: tryb_edycji.php?zestaw=$table"));
-    }                
-                                                
-    //if ($_POST['dodaj_element1'] == $dodaj_element1  && $_POST['dodaj_element2'] == $dodaj_element2 && $_POST['dodaj_element3'] == $dodaj_element3) 
-    //{
-    //exit(header("Location: tryb_edycji.php?zestaw=$tabela"));
-    //}
     
-    try
-    {
-         $polecenie = "INSERT INTO $tabela ($angielski, $polski, $przyklad , $zdanie, $flaga_baza ) VALUES ('$dodaj_element1', '$dodaj_element2', '1', '$dodaj_element3', '0')";
-         $liczba = $pdo ->exec($polecenie);
-         exit(header("Location: tryb_edycji.php?zestaw=$table"));
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_edycji.php?zestaw='.$table.'">wróć</a>';
-    }
+add_word($tabela, $pdo);
 
 break;
                                   
 case 'edytuj':
 
-$id = filtruj($_GET['id']);
-$edytuj_element1 = filtruj($_POST['a'.$id.'']);
-$edytuj_element2 = filtruj($_POST['b'.$id.'']);
-$edytuj_element3 = filtruj($_POST['c'.$id.'']);
-
-     if (empty($id)){
-         echo"Wystąpił następujący błąd: Nieprawidłowy numer 'id'";
-     }
-          
-     if (empty($_POST['a'.$id.'']) || empty($_POST['b'.$id.''])){
-         header("Location: tryb_edycji.php?zestaw=$tabela");
-     }
-
-     if ($_POST['a'.$id.''] == $edytuj_element1  && $_POST['b'.$id.''] == $edytuj_element2 && $_POST['c'.$id.''] == $edytuj_element3){
-         header("Location: tryb_edycji.php?zestaw=$tabela");    
-     }
-
-     try
-     {
-          $polecenie = ("UPDATE $tabela SET  v1 = '$edytuj_element1' , v2 = '$edytuj_element2', weight = '1'  , zdanie = '$edytuj_element3' WHERE id = '$id' ");
-          echo $polecenie;
-          $liczba = $pdo ->exec($polecenie);
-          header("Location: tryb_edycji.php?zestaw=$tabela");
-       
-     }
-     catch(PDOException $e)
-     {
-        echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-        echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-     } 
+edit_table_row($tabela, $pdo);
 
 break;
                           
 case 'usun':
 
-$id = filtruj($_GET['id']);
+delete_table_word($tabela, $pdo);
 
-    if (empty($id)){
-        echo "Numer ID nie istnieje";
-    }
-     
-    try
-    {
-    $pdo ->exec("DELETE FROM $tabela WHERE id = '$id' ") or die('Błąd zapytania');
-    header("Location: tryb_edycji.php?zestaw=$tabela");
-      
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-    }
-
-  break;
+break;
                                   
 case 'wyszukaj':
 
-$slowo = filtruj($_POST['slowo']);
-
-    if (empty($slowo)){
-        echo "Nie można wyszukać słowa";
-      //header("Location: tryb_edycji.php?zestaw=$tabela");
-    }
-
-    try
-    {
-    $zapytanie = "SELECT * FROM $tabela WHERE $angielski LIKE '$slowo' OR $polski LIKE '$slowo'";
-    echo $zapytanie;              
-    $liczba = $pdo ->query($zapytanie) or die('Błąd zapytania');
-    $wykonanie = $pdo->prepare($zapytanie);
-    $wykonanie->execute();
-    $licznik_id=$wykonanie->rowCount();
-        if ($licznik_id == 0)
-        { 
-            header("Location: tryb_edycji.php?zestaw=$tabela");
-        }
-        else 
-        {
-            while($row = $liczba->fetch())
-                            {                 
-                            load_word_by_id($tabela, $row);
-                            }
-        }                                                          
-    }
-    catch(PDOException $e)
-    {
-        echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-        echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-    }
+search_table_word($tabela, $pdo);
 
 break;
 
 case 'aktywuj':
-    /* :: tutaj zmieniam flagę w bazie danych
-        ---------------------------
-       - id - name_table - flaga -
-       ---------------------------
-       -  1 -   Unit_1   -   1   -  
-       -    -            -       -
-       ---------------------------  */
-       
-    try
-    {
-        $querty = "UPDATE info_table SET flaga = '1' WHERE name_table = '$tabela' ";
-        $pdo ->exec($querty) or die('Błąd zapytania UPDATE');
-        //echo $tabela. " zmodyfikowano na 1 czyli aktywny";
-    header("Location: tryb_edycji.php?zestaw=$tabela");
-      
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-    }
-     
+
+active_table($tabela, $pdo);
+
 break;
 
 case 'deaktywuj':
-    try
-    {
-        $querty = "UPDATE info_table SET flaga = '0' WHERE name_table = '$tabela' ";
-        $pdo ->exec($querty) or die('Błąd zapytania UPDATE');
-        //echo $tabela. " zmodyfikowano na 0 czyli aktywny";
-    header("Location: tryb_edycji.php?zestaw=$tabela");
-      
-    }
-    catch(PDOException $e)
-    {
-       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
-    }
+
+deactive_table($tabela, $pdo);
     
 break;
                               
@@ -250,7 +113,7 @@ load_fishcards_all($tabela, $pdo);
     
 break;
 
-} // koniec switcha
+}
 
 ?>
 </body>
