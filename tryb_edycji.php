@@ -6,7 +6,6 @@ require_once "php/__function_routes.php";
 if(!$connect){
     header('location: index.php');//przekierowanie do logowania
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
 <?php
 include('baza.php');//sprawdzanie czy połączono do bazy
 if(!isset($connect)){//jeśli tak przenieś do fiszki php
+if(!isset($connect)){//jeśli tak przenieś do fiszki php
     header('location: fiszki.php');
 }else if(!empty($_POST['login'])){//jeśli nie sprawdź czy formularz
 $connect = mysqli_connect('localhost',$_POST['login'],$_POST['password']);

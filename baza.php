@@ -19,10 +19,6 @@ if(!$table=mysqli_select_db($connect,'fiszki_nauka_slowek'))
 else{
     $connect=false;
 }
-
-
-
-
 ?>
 
 
