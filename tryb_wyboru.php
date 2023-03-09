@@ -1,3 +1,4 @@
+
 <?php
 include('baza.php');//sprawdzam połączenie
 if(!$connect){

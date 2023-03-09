@@ -1,3 +1,4 @@
+
 <?php
 include('baza.php');//sprawdzam połączenie
 require_once('polaczeniePDO.php');

@@ -1,3 +1,4 @@
+
 <?php
 include('../baza.php');
 if(!$connect){
@@ -13,3 +14,4 @@ echo  'Słówko o id: '.$data['id'].'<br> Wartość 1: '.$data['v1'].'<br> Warto
 
 
 ?>
+

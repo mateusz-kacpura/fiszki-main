@@ -1,3 +1,4 @@
+
 <?php
 include('baza.php');//sprawdzanie czy połączono do bazy
 if(!isset($connect)){//jeśli tak przenieś do fiszki php
@@ -24,3 +25,4 @@ $connect = mysqli_connect('localhost',$_POST['login'],$_POST['password']);
    </form>
 </body>
 </html>
+

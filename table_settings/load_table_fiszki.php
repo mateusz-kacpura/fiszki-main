@@ -31,3 +31,5 @@ if ($flaga == 1)
         echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
     }
 }
+
+?>
