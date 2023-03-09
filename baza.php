@@ -22,24 +22,6 @@ else{
 
 
 
-require_once('polaczeniePDO.php');
-
-if(!isset($_SESSION))      
-{         
-     session_start();      
-}
-
-try
-{ 
-    $table_name=$_POST['word_operation'];   
-    $drop_table = "drop table $table_name";
-    $pdo ->query($drop_table) or die('Nie udało się usunąć tabeli');
-    header('location: ./fiszki.php');
-}
-catch(PDOException $e)
-{
-   echo 'Nie udało się nawiązać połączenia z bazą danych';
-}
 
 ?>
 
