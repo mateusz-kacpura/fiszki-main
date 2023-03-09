@@ -12,5 +12,6 @@ $option = array(
 
 $pdo = new PDO($host, $login, $password, $option);
 $pdo_set = new PDO( $server, $login, $password );
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-);        
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
+
+?>
