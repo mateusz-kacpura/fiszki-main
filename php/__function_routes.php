@@ -1,6 +1,5 @@
 <?php
 // require_once "activate_the_word_set.php"; //wywala błąd w lini 15 niezdefiniowana zmienna $table
-require_once "__configure_table_columns";
 require_once "active_table.php";
 require_once "add_form.php";
 require_once "add_menu_right.php";

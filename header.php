@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cms.css">
 
-
     <script src="jquery.min.js"></script>
     
 </head>
