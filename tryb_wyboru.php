@@ -9,7 +9,7 @@ require_once('polaczeniePDO.php');
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include('header.php') ?>
+<?php include('html/header.php') ?>
 
 <body>
 <h2>PANEL ADMINISTRACYJNY</h2>

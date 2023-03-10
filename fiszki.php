@@ -9,7 +9,7 @@ if(!$connect){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('header.php') ?>
+<?php include('html/header.php') ?>
 
 <body>
 <h2>NAUKA</h2>
@@ -118,7 +118,7 @@ $(document).ready(function(){
     //$('.Button_on').load("name_table.php");
     $('.pokaz-tabele').on('click',function(){
     var tabelka = $(this).val();
-    $('.pokaz').show().load("show_table.php?table="+tabelka);
+    $('.pokaz').show().load("table_settings/show_table.php?table="+tabelka);
     });
     $('.Button_off').click(function(){
     $('.pokaz').hide();
@@ -139,7 +139,7 @@ $(document).ready(function(){
             array2=[];
             weight=[];
             const table=this.innerHTML
-            $('.panel').load('table_settings/load_table_fiszki.php',{
+            $('.panel').load('php/panel_learning/load_table_fishcards.php',{
                 table:table
             })
         })

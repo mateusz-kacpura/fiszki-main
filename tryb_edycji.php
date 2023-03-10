@@ -2,7 +2,7 @@
 <?php
 include('baza.php');//sprawdzam połączenie
 require_once('polaczeniePDO.php');
-require_once "php/__function_routes.php";
+require_once "php/panel_admin/__function_routes.php";
 
 if(!$connect){
     header('location: index.php');//przekierowanie do logowania
@@ -10,7 +10,7 @@ if(!$connect){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('header.php') ?>
+<?php include('html/header.php') ?>
 
 <body>
 <h2>PANEL ADMINISTRACYJNY</h2>
@@ -95,4 +95,4 @@ break;
 
 ?>
 </body>
-<?php include('js/__scripts_routes.php') ?>
+<?php include('js/panel_admin/__scripts_routes.php') ?>
