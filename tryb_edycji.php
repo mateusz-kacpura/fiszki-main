@@ -95,21 +95,4 @@ break;
 
 ?>
 </body>
-<script src="js/action_click_activate_the_word_set.js"></script>
-<script src="js/action_click_deactivate_the_word_set.js"></script>
-<script src="js/action_click_menu_button.js"></script>
-<script src="js/click_connections.js"></script>
-
-<script>
-
-//----------Funkcje obslugujące zestaw - jeszcze nie działają i powodują błędy ---------//
-
-$(document).ready(function() {
-    $('.wybrany_zestaw').click(function(){
-        $('.wybrany_zestaw').removeClass('active')
-        console.log(this.classList.add('active'))
-    })
-})
-
-// usun_zestaw
-</script>
+<?php include('js/__scripts_routes.php') ?>
