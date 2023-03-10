@@ -1,6 +1,6 @@
 <?php
 
-require_once "../polaczeniePDO.php";
+require_once "polaczeniePDO.php";
 
 try
 {
