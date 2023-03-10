@@ -12,7 +12,7 @@ require_once "delete_table.php";
 require_once "edit_table_row.php";
 require_once "filter.php";
 require_once "load_fishcards_all.php";
-require_once "load_table_words.php";
+//require_once "load_table_words.php";
 require_once "load_table_name.php";
 require_once "load_word_by_id.php";
 require_once "search_table_word.php";

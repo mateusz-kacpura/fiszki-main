@@ -29,8 +29,7 @@ function edit_table_row($table, $pdo){
     }
     catch(PDOException $e)
     {
-        echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-        echo '</br><a href="tryb_edycji.php?zestaw='.$table.'">wróć</a>';
+
     } 
 }
 ?>

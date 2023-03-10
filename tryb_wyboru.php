@@ -96,8 +96,7 @@ case 'dodaj_zestaw':
         }
         catch(PDOException $e)
         {
-            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-            echo '</br><a href="tryb_wyboru.php">wróć</a>';
+
         }
     }
     
@@ -127,7 +126,7 @@ case 'usun_zestaw':
         }
         catch(PDOException $e)
         {
-        echo 'Nie udało się znaleść danego zestawu w bazie danych: ';
+
         }
     }
     
@@ -163,8 +162,7 @@ case 'wyszukaj_zestaw':
         }
         catch(PDOException $e)
         {
-            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
-            echo '</br><a href="tryb_wyboru.php">wróć</a>';
+
         }
     }
         
@@ -191,7 +189,7 @@ case 'importuj_baze_danych':
             }
         catch(PDOException $e)
             {
-                echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+
             }
         
         // czyta plik i wykonuje import
