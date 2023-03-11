@@ -1,10 +1,10 @@
 
 <?php
-include('baza.php');//sprawdzam połączenie
-if(!$connect){
+
+require_once('polaczeniePDO.php');
+if(!$pdo){
     header('location: index.php');//przekierowanie do logowania
 }
-require_once('polaczeniePDO.php');
 require_once "php/panel_admin/choose_table/html/__html_routes.php";
 require_once "php/panel_admin/choose_table/__function_routes.php";
 
