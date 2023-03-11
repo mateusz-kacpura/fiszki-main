@@ -88,20 +88,6 @@ if(!$connect){
                 <div class="result">   
                     
             </div>
-            <div>
-                <h1>Dodawanie nowej tabeli</h1>
-                <form action="table_settings/add_db.php" method="post">
-                Nazwa nowej tabeli:<input type="text" name="databasename">
-                <input class="submit" type="submit" value="Wyślij">
-                </form>
-                </div><div>
-                 <h1>Usuwanie tabel</h1>
-                <form action="table_settings/delete_db.php" method="post">
-                  <?php include "name_table.php" ?>
-                    <input class="submit" type="submit" value="Wyślij">
-                    </form>
-                    <a href="table_settings/log_out.php">WYLOGUJ</a>
-            </div>
         </div>
     </div>
 </body>

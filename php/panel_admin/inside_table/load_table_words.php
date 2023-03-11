@@ -4,7 +4,7 @@
 
 require_once('../polaczeniePDO.php');
     
-function load_table_words($tabela){
+function load_table_words($tabela, $pdo){
     try
     {
         $liczba = $pdo -> query("SELECT * FROM $tabela"); 

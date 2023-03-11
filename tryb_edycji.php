@@ -2,7 +2,7 @@
 <?php
 include('baza.php');//sprawdzam połączenie
 require_once('polaczeniePDO.php');
-require_once "php/panel_admin/__function_routes.php";
+require_once "php/panel_admin/inside_table/__function_routes.php";
 
 if(!$connect){
     header('location: index.php');//przekierowanie do logowania

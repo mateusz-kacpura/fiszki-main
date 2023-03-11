@@ -6,7 +6,7 @@
         $querty = "UPDATE info_table SET flaga = '0' WHERE name_table = '$tabela' ";
         $pdo ->exec($querty) or die('Błąd zapytania UPDATE');
         //echo $tabela. " zmodyfikowano na 0 czyli aktywny";
-    header("Location: tryb_edycji.php?zestaw=$tabela");
+        header("Location: tryb_edycji.php?zestaw=$tabela");
       
     }
     catch(PDOException $e)

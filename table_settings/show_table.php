@@ -1,6 +1,6 @@
 <?php
 
-require_once "../polaczeniePDO.php";
+require_once "../polaczeniePDO.php"; // nie jestem pewien czy jest polaczenie
 
 try
 {
@@ -24,7 +24,7 @@ $sql = $pdo -> query("SELECT * FROM ".$_GET['table']."");
 }
 catch(PDOException $e)
 {
-echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+echo 'Połączenie nie mogło zostać utworzone: SHOW-TABLE' . $e->getMessage();
 }                                                      
 
 ?>
