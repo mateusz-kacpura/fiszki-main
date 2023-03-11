@@ -10,7 +10,8 @@ function delete_table($table, $pdo){
     }
     catch(PDOException $e)
     {
-
+    echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+    header('location: ./index.php');
     }
 }
 

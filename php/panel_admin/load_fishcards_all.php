@@ -15,7 +15,7 @@ function load_fishcards_all($table, $pdo){
       }
       catch(PDOException $e)
       {
-
+      echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
       }                                                      
 }
 

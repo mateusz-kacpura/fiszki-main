@@ -11,6 +11,7 @@
     }
     catch(PDOException $e)
     {
-
+       echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+       echo '</br><a href="tryb_edycji.php?zestaw='.$tabela.'">wróć</a>';
     }
 ?>
