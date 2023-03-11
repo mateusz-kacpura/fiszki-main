@@ -69,7 +69,7 @@ break;
 ?>
 <?php
 echo "<div>";
-    require_once "table_select_admin.php"; 
+    select_table_flag_all($pdo);
 echo "</div>";
 ?>
 </div>
@@ -85,25 +85,6 @@ const menu_click = document.querySelector('.menubutton').addEventListener('click
     document.querySelector('.menu').classList.toggle('active');
 });
 
-
-  $("button").on('click',function(){
-    var zestaw = $( this ).text();
-        window.document.location.href="tryb_edycji.php?zestaw="+zestaw;
-        return false;
-  });
-
-
-
-  $('#przycisk').click(function(){
-    window.document.location.href="fiszki.php";
-    return false;
-  });
-
-
-
-  $('#zestawy').click(function(){
-    window.document.location.href="tryb_wyboru.php";
-    return false;
-  });
-
 </script>
+
+<?php include('js/panel_admin/choose_table/__scripts_routes.php') ?>

@@ -5,9 +5,7 @@ $('#przycisk').click(function(){
     return false;
   });
 
-
-
-  $('#zestawy').click(function(){
+$('#zestawy').click(function(){
     window.document.location.href="tryb_wyboru.php";
     return false;
   });

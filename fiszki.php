@@ -3,6 +3,7 @@
 // Mustache_Autoloader::register();
 //  $m = new Mustache_Engine; echo $m->render('Hello, {{planet}}!', array('planet' => 'World')); // "Hello, World!"
 include('baza.php');//sprawdzam połączenie
+require_once "polaczeniePDO.php";
 if(!$connect){
     header('location: index.php');//przekierowanie do logowania
 }
@@ -20,10 +21,10 @@ if(!$connect){
 <button class="zestawy"  id="zestawy">ZARZĄDZAJ ZESTAWAMI</button>
 
 </div>
-<h2>AKTYWNE ZESTAWY</h2>
-    <div class="select">
-        <?php require_once "table_select.php" ?>
-    </div>
+
+        <?php require_once "php\panel_admin\choose_table\select_table_by_flag.php";
+              select_table_flag_true($pdo); ?>
+
     <div class="panel"><span></span><span></span>  </div>
      
         <center>

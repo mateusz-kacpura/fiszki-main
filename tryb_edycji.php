@@ -95,4 +95,4 @@ break;
 
 ?>
 </body>
-<?php include('js/panel_admin/__scripts_routes.php') ?>
+<?php include('js/panel_admin/inside_table/__scripts_routes.php') ?>
