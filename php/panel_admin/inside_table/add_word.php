@@ -35,5 +35,5 @@ function add_word($table, $pdo){
            echo '</br><a href="tryb_edycji.php?zestaw='.$table.'">wróć</a>';
         }
 }
-	
+
 ?>

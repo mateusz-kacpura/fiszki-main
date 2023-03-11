@@ -17,7 +17,5 @@ $query = "INSERT INTO $select_database (id, v1, v2, weight, zdanie) values ('$co
 mysqli_query($connect,$query);
 echo 'Dodałem nowe słówko pod id = '.$count . $select_database . $query  ; 
 
-    
-
 
 ?>
