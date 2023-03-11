@@ -83,3 +83,5 @@ function count_button($button, $pdo){
         return 1;
     }
 }
+
+?>
