@@ -6,7 +6,7 @@ if(!$connect){
 }
 require_once('polaczeniePDO.php');
 require_once "php/panel_admin/choose_table/html/__html_routes.php";
-// require_once "php/panel_admin/choose_table/__function_routes.php";
+require_once "php/panel_admin/choose_table/__function_routes.php";
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ require_once "php/panel_admin/choose_table/html/__html_routes.php";
 </div>
 
 <?php
- // html_choose_table_menu();
+html_choose_table_menu();
 ?>
 
 <div>
@@ -62,12 +62,15 @@ case 'importuj_baze_danych':
 break;
 default:       
 
-    // choose_table($connect);
-
 break;                    
 
 } // zamykający swittch
 
+?>
+<?php
+echo "<div>";
+    require_once "table_select_admin.php"; 
+echo "</div>";
 ?>
 </div>
 </body>

@@ -45,6 +45,3 @@ function dodaj_zestaw($pdo){
         }
     }
 }
-
-
-?>

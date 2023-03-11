@@ -6,4 +6,3 @@ function html_wyloguj(){
          </div>';
 }
 
-?>

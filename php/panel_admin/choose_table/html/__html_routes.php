@@ -31,7 +31,3 @@ function html_choose_table_menu(){
     </div>'
     ;
 }
-
-
-
-?>

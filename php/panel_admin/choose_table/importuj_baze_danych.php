@@ -49,4 +49,3 @@ function importuj_baze_danych($csvFile, $pdo){
         echo "ERROR OPENING $csvFile"; 
     }
 }
-?>

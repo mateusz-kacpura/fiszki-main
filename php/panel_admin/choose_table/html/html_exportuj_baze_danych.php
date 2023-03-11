@@ -14,4 +14,3 @@ function html_exportuj_baze_danych(){
           </form></div>';
 }
 
-?>

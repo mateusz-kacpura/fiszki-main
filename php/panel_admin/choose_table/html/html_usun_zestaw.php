@@ -12,4 +12,3 @@ function html_usun_zestaw(){
           </div>';   
 }
 
-?>

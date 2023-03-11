@@ -10,4 +10,3 @@ function html_wyszukaj_zestaw(){
           </div>';  
 }
 
-?>

@@ -33,4 +33,3 @@ function wyszukaj_zestaw($pdo){
      }
  }
 }
-?>

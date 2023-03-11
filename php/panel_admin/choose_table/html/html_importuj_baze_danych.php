@@ -33,4 +33,3 @@ echo '</br><div class="import" ><form action="tryb_wyboru.php?zestaw=importuj_ba
       </form></div>';
 }
 
-?>
