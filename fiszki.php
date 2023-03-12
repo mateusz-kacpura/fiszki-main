@@ -12,17 +12,17 @@ if(!$pdo){
 <?php include('html/header.php') ?>
 
 <body>
-<h2>NAUKA</h2>
 
-<div class="select" >
 
-<button class="fiszki" id="przycisk">NAUKA</button>
-<button class="zestawy"  id="zestawy">ZARZĄDZAJ ZESTAWAMI</button>
+        <?php 
+        require_once "php/__navigate_page.php";
+        
+        $file_name = basename(__FILE__);
 
-</div>
+        navigate_page($file_name);
 
-        <?php require_once "php\panel_admin\choose_table\select_table_by_flag.php";
-              select_table_flag_true($pdo); ?>
+        require_once "php\panel_admin\choose_table\select_table_by_flag.php";
+              select_table_by_flag_true($pdo); ?>
 
     <div class="panel"><span></span><span></span>  </div>
      

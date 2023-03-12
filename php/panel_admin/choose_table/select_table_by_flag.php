@@ -1,15 +1,15 @@
 <?php 
 
-function select_table_flag_all($pdo){
+function select_table_by_flag_all($pdo){
     $sql_true = "SELECT `name_table` FROM `info_table`  WHERE flaga = '1'";  
     $sql_false = "SELECT `name_table` FROM `info_table`  WHERE flaga = '0'"; 
     flag_all($sql_true, $sql_false, $pdo);
 }
-function select_table_flag_true($pdo){
+function select_table_by_flag_true($pdo){
     $sql_true = "SELECT `name_table` FROM `info_table`  WHERE flaga = '1'";
     flag_true($sql_true, $pdo);
 }
-function select_table_flag_false($pdo){
+function select_table_by_flag_false($pdo){
     $sql_false = "SELECT `name_table` FROM `info_table`  WHERE flaga = '0'";
     flag_false($sql_false, $pdo);
 }

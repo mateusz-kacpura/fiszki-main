@@ -7,6 +7,7 @@ if(!$pdo){
 }
 require_once "php/panel_admin/choose_table/html/__html_routes.php";
 require_once "php/panel_admin/choose_table/__function_routes.php";
+require_once "php/__navigate_page.php";
 
 ?>
 <!DOCTYPE html>
@@ -14,65 +15,20 @@ require_once "php/panel_admin/choose_table/__function_routes.php";
 
 <?php include('html/header.php') ?>
 
-<body>
-<h2>PANEL ADMINISTRACYJNY</h2>
-
-<div class="select" >
-
-<button  class="fiszki" id="przycisk">NAUKA</button>
-<button  class="zestawy" id="zestawy">ZARZĄDZAJ ZESTAWAMI</button>
-
-</div>
-
 <?php
+
+$file_name = basename(__FILE__);
+
+navigate_page($file_name);
+
 html_choose_table_menu();
-?>
 
-<div>
+navigate_table($pdo);
 
-<?
-// poruszanie sie po stronie
-if(!isset($_GET['zestaw']))   {
-
-    $_GET['zestaw'] = 'zestaw';
- 
-}
-// zarzadzanie zestawami
-switch($_GET['zestaw']){
-
-case 'dodaj_zestaw':
-
-    dodaj_zestaw($pdo);
-    
-break;
-case 'usun_zestaw':
-
-    usun_zestaw($pdo);  
-    
-break;
-case 'wyszukaj_zestaw':
-
-    wyszukaj_zestaw($pdo);
-        
-break;
-case 'importuj_baze_danych':
-
-    importuj_baze_danych($csvFile, $pdo);
-
-break;
-default:       
-
-break;                    
-
-} // zamykający swittch
+select_table_by_flag_all($pdo);
 
 ?>
-<?php
-echo "<div>";
-    select_table_flag_all($pdo);
-echo "</div>";
-?>
-</div>
+
 </body>
 
 <script>

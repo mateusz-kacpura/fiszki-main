@@ -1,7 +1,9 @@
 <?php
-function importuj_baze_danych($csvFile, $pdo){
-    $flaga = 1;
-
+function importuj_baze_danych($pdo){
+    // czyta plik i wykonuje import
+    $csvFile = "csvFile jest pusty";
+    $csvFile=$_FILES["file"]["tmp_name"];
+    $flaga = 1;   
     if (empty($_POST["nazwa_importowanej_tabeli"]))
     {
         $flaga = 0;
@@ -25,8 +27,7 @@ function importuj_baze_danych($csvFile, $pdo){
                 echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
             }
         
-        // czyta plik i wykonuje import
-        $csvFile=$_FILES["file"]["tmp_name"];
+
         $handle = fopen($csvFile, "r");
 
         if ($handle) {
