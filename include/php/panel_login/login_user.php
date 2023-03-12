@@ -59,7 +59,7 @@ if($flaga==1){
                 GRANT ALL ON `$db`.* TO '$user'@'$host';
                 FLUSH PRIVILEGES;")
         or die(print_r($pdo->errorInfo(), true));
-            header('location: fiszki.php');
+            header('location: include/fiszki.php');
         }
     }
     catch (PDOException $e) {
