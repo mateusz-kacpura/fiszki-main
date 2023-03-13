@@ -15,28 +15,20 @@ require_once "php/__navigate_page.php";
 
 <body>
 
-
 <?php 
 $file_name = basename(__FILE__);
 navigate_page($file_name);
 select_table_by_flag_true($pdo);        
 ?>
 
-    <div class="panel"><span></span><span></span>  </div>
-     
-    <?php require_once "html/audio_controls.php" ?>
-                
-    <div class="random_button"><i class="icon-arrows-ccw"></i></div>
-                
-    <div class="menu">
-        <div class="menubutton"><i class="icon-cog-alt"></i></div>
-        <div class="menu-content"> 
-            <div>
-                <h1>TRYBY NAUKI</h1>
-                
-            </div>
-        </div>
-    </div>
+<div class="panel"><span></span><span></span>  </div>
+
+<?php require_once "php/panel_learning/html/audio_controls.php" ?>
+             
+<div class="random_button"><i class="icon-arrows-ccw"></i></div>
+
+<?php require_once "php/panel_learning/html/tryby_nauki.php"; ?>
+
 </body>
 <?php include('js\panel_learning\__scripts_routes.php') ?>
 </html>

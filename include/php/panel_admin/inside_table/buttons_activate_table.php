@@ -1,6 +1,6 @@
 <?php
 
-    function buttons_activate_table($table){
+function buttons_activate_table($table){
         echo '
                    <div class="nowe_slowo">
                    <h2>'.$table.'</h2>
@@ -11,6 +11,4 @@
              '; 
     
     } 
-
-
 ?>

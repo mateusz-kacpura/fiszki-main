@@ -1,5 +1,6 @@
 <?php
     require_once "../../polaczeniePDO.php";
+    require_once "../panel_admin/inside_table/load_table_name.php";
 
     if(!isset($_SESSION))      
     {         
@@ -10,6 +11,12 @@
 
     if (!isset($_POST['table']))
     {
+        echo "Zabezpieczenie przed nadużyciem load_word_fishcards.php";
+        $flaga = 0;
+    }
+
+    if(load_isset_table_not_return($_POST['table'], $pdo) != $_POST['table']){
+        echo "Nie udało się załadować fiszek";
         $flaga = 0;
     }
 

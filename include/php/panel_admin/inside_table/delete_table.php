@@ -1,9 +1,11 @@
 <?php
 
+require_once "filter.php";
+
 function delete_table($table, $pdo){
     try
     {
-        $table=$_POST['word_operation'];   
+        $table=filtruj($_POST['word_operation']);   
         $drop_table = "drop table $table";
         $pdo ->query($drop_table) or die('Błąd zapytania');
         header('location: ./fiszki.php');

@@ -13,14 +13,13 @@ function search_table_word($table, $pdo){
     $slowo = filtruj($_POST['slowo']);
 
     if (empty($slowo)){
-        echo "Nie można wyszukać słowa";
+        echo "Zabezpieczenie przed nadużyciem search_table_word.php";
       //header("Location: tryb_edycji.php?zestaw=$tabela");
     }
 
     try
     {
-    $zapytanie = "SELECT * FROM $table WHERE $angielski LIKE '$slowo' OR $polski LIKE '$slowo'";
-    echo $zapytanie;              
+    $zapytanie = "SELECT * FROM $table WHERE $angielski LIKE '$slowo' OR $polski LIKE '$slowo'";            
     $liczba = $pdo ->query($zapytanie) or die('Błąd zapytania');
     $wykonanie = $pdo->prepare($zapytanie);
     $wykonanie->execute();
