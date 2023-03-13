@@ -6,6 +6,8 @@ require_once "polaczeniePDO.php";
 if(!$pdo){
     header('location: index.php');//przekierowanie do logowania
 }
+require_once "php\panel_admin\choose_table\select_table_by_flag.php";
+require_once "php/__navigate_page.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,34 +16,16 @@ if(!$pdo){
 <body>
 
 
-        <?php 
-        require_once "php/__navigate_page.php";
-        
-        $file_name = basename(__FILE__);
-
-        navigate_page($file_name);
-
-        require_once "php\panel_admin\choose_table\select_table_by_flag.php";
-              select_table_by_flag_true($pdo); ?>
+<?php 
+$file_name = basename(__FILE__);
+navigate_page($file_name);
+select_table_by_flag_true($pdo);        
+?>
 
     <div class="panel"><span></span><span></span>  </div>
      
-        <center>
-                <h2>Sound Information</h2>
-                <div id="length">Duration:</div>
-                <div id="source">Source:</div>
-                <div id="status" style="color:red;">Status: Loading</div>
-                <hr>
-                <h2>Control Buttons</h2>
-                <button id="play">Play</button>
-                <button id="pause">Pause</button>
-                <button id="restart">Restart</button>
-                <hr>
-                <h2>Playing Information</h2>
-                <div id="currentTime">0</div>               
-                                                     </center>
+    <?php require_once "html/audio_controls.php" ?>
                 
-    <a class="log_out" href="table_settings/log_out.php">Wyloguj</a>
     <div class="random_button"><i class="icon-arrows-ccw"></i></div>
                 
     <div class="menu">

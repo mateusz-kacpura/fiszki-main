@@ -14,4 +14,5 @@ function deactive_table($table, $pdo){
        echo '</br><a href="tryb_edycji.php?zestaw='.$table.'">wróć</a>';
     }
 }
+
 ?>

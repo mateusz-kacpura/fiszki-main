@@ -31,16 +31,4 @@ select_table_by_flag_all($pdo);
 
 </body>
 
-<script>
- $('.select button').click(function(){
-            $('.select button').removeClass('active')
-            console.log(this.classList.add('active'))
-        })
-
-const menu_click = document.querySelector('.menubutton').addEventListener('click', (e) => {
-    document.querySelector('.menu').classList.toggle('active');
-});
-
-</script>
-
 <?php include('js/panel_admin/choose_table/__scripts_routes.php') ?>

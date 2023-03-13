@@ -20,18 +20,13 @@ $file_name = basename(__FILE__);
 
 navigate_page($file_name);
 
+$tabela = filtruj($_GET['zestaw']);
 
-// typ pierwszy angielsko - poslki i polsko - angielski
-$tabela = filtruj($_GET['zestaw']);    
-
-    if(!isset($tabela)) { 
-          header("Location: tryb_wyboru.php");
-    }
-    if(!isset($pdo)){
-         echo "<h1>Nie można zrealizować połączenia z żadną bazą danych</h1>";
-    }
+if(!isset($pdo)){
+        echo "<h1>Nie można zrealizować połączenia z żadną bazą danych</h1>";
+}
     
-load_table_name($tabela, $pdo); 
+load_isset_table($tabela, $pdo); 
 
 add_menu_right($tabela);
 
