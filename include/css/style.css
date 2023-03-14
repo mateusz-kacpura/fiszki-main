@@ -211,6 +211,9 @@ color:  white;
 }
 
 .przycisk {
+    display: grid;
+    align-items: center;
+    justify-items: center;
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -225,6 +228,7 @@ color:  white;
 }
 
 .przycisk1 {
+    
   color: rgb(255, 255, 255); 
   border: 2px solid #ffffff;
   background-color: #00af06;
@@ -315,15 +319,15 @@ HTML SCSS JS Result Skip Results Iframe EDIT ON *, *::before, *::after {
 }
 .input-sizer {
 	display: inline-grid;
-	vertical-align: top;
+	vertical-align: center;
 	align-items: center;
 	position: relative;
 	border: solid 1px;
-	padding: .25em .5em;
+	padding: 1.25em .5em;
 	margin: 5px;
 }
 .input-sizer.stacked {
-	padding: .10em;
+	padding: .15em;
 	align-items: stretch;
 }
 .input-sizer.stacked::after, .input-sizer.stacked input, .input-sizer.stacked textarea {

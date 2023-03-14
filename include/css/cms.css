@@ -27,11 +27,11 @@ p {
 }
 
 .edytuj {
-    flex-basis: 70%;
+    flex-basis: 50%;
     flex-grow: 1;
+    justify-content: center;
     box-sizing: border-box;
-    margin: 5px 70px;
-    padding: 10px 60px;
+    padding: 10px;
     text-align: center;
     text-transform: uppercase;
     border: 3px white solid;
@@ -39,6 +39,10 @@ p {
     cursor: pointer;
     color: white;
     font-size: 1.6rem;
+    margin-left: 0px auto;
+    margin-top: 1%;
+    scroll-margin-right: 0px auto;
+
 }
 
 .usun {
@@ -59,7 +63,6 @@ font-size: 1.6rem;
 table {
     margin:0 auto;
     display:block;
-
 }
 
 .edit {
@@ -147,11 +150,83 @@ table {
   margin-bottom:30px;
 }
 
-.select_zestaw {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 10px 60px;
+.select_zestaw_1 {
+  display: grid;
+  grid-template-columns: 0fr;
+  grid-auto-rows: 21px;
+  grid-gap: 2px;
+  border: 2px solid #ffffff;
+  background-color: #00af06;
+  font-weight: 900;
+  text-align: center;
+  justify-content:  center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 20px;
 }
 
+.select_zestaw_0 {
+  display: grid;
+  grid-template-columns: 0fr;
+  grid-auto-rows: 21px;
+  grid-gap: 2px;
+  border: 2px solid #ffffff;
+  background-color: rgb(255, 0, 0); 
+  font-weight: 900;
+  text-align: center;
+  justify-content:  center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 20px;
 
+}
+
+.select_zestaw_1:hover {
+  display: grid;
+  grid-template-columns: 0fr;
+  grid-auto-rows: 21px;
+  border: 2px solid #ffffff;
+  background-color: #008d05;
+  font-weight: 900;
+  justify-content:  center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 20px;
+}
+
+.select_zestaw_0:hover {
+  display: grid;
+  grid-template-columns: 0fr;
+  grid-auto-rows: 21px;
+  border: 2px solid #ffffff;
+  background-color: rgb(148, 0, 0); 
+  font-weight: 900;
+  text-align: center;
+  justify-content:  center;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  line-height: 20px;
+}
+
+/* reconect / czasy rozwiązania umowy /
+wpłaty / 
