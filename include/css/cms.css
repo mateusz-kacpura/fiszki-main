@@ -14,32 +14,30 @@ p {
 .nowe_slowo {
     display: block;
     width: 100%;
-    border: 1px black solid;
+    border: 0px black solid;
     text-align: center;
-    margin-bottom:30px;
+    margin-bottom:0px;
     padding: 30px 0px;
 }
 
 .arkusz {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: grid;
+  place-content: center; 
+
 }
 
 .edytuj {
-    flex-basis: 50%;
-    flex-grow: 1;
+    flex-basis: auto;
     justify-content: center;
     box-sizing: border-box;
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
     border: 3px white solid;
-    background-color: #4c7689;
+    background-color:  #0011ff63;
     cursor: pointer;
     color: white;
     font-size: 1.6rem;
-    margin-left: 0px auto;
     margin-top: 1%;
     scroll-margin-right: 0px auto;
 
@@ -54,7 +52,7 @@ padding: 10px 60px;
 text-align: center;
 text-transform: uppercase;
 border: 3px white solid;
-background-color: #4c7689;
+background-color:  #0011ff63;
 cursor: pointer;
 color: white;
 font-size: 1.6rem;
@@ -85,7 +83,7 @@ table {
     text-align: center;
     text-transform: uppercase;
     border: 3px white solid;
-    background-color: #4c7689;
+    background-color: #0038526e;
     cursor: pointer;
     color: white;
     font-size: 1.6rem;

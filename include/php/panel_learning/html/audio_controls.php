@@ -1,6 +1,6 @@
 <div class="class_nav_contener">
-<button  class="button_delete" id="przycisk">USUŃ WYRAŻENIE Z PLANU NAUKI</button>
-<button  class="button_add" id="przycisk">DODAJ WYRAŻENIE DO ZESTAWU</button> 
+<button  class="przycisk przycisk3" id="przycisk">USUŃ WYRAŻENIE Z PLANU NAUKI</button>
+<button  class="przycisk przycisk1" id="przycisk">DODAJ WYRAŻENIE DO ZESTAWU</button> 
 </div>
 
 <div class="class_audio_main">
@@ -12,9 +12,9 @@
                 <hr>
                 <h2>Zarządzaj</h2>
                 <div class="class_audio_contener">
-                    <button class="button_audio" id="play">Odtwarzaj</button>
-                    <button class="button_audio" id="pause">Zatrzymaj</button>
-                    <button class="button_audio" id="restart">Jeszcze raz</button>
+                    <button class="przycisk przycisk1"  id="play">Odtwarzaj</button>
+                    <button class="przycisk przycisk3" id="pause">Zatrzymaj</button>
+                    <button class="przycisk przycisk1"  id="restart">Jeszcze raz</button>
                 </div>
                 <hr>
                 <h2>Informacje</h2>
@@ -42,11 +42,13 @@
 
 .class_nav_contener {
     flex-wrap: nowrap, wrap, wrap-reverse;
-    width: 1100px;
-    height: 90px;
+    display: flex;
+    width: auto;
+    height: auto;
     justify-content: center;
-    margin: 0 auto;
+    align-items: center;
     padding: 10px;
+    margin: auto;
 }
 
 .button_delete {

@@ -7,7 +7,7 @@ Chciałbym dopełnić go świadectwem osoby po aborcji, lecz te kobiety które u
 */
 
 body {
-    background-color: #23242e;
+    background-color: #000000;
     color: white;
     font-size: 2.2rem;
     margin: 0px;
@@ -16,7 +16,7 @@ body {
 }
 
 .panel {
-    background-color: #65847b;
+    background-color: #0011ff63;
     width: 70%;
     height: 50vw;
     max-height: 500px;
@@ -37,15 +37,15 @@ body {
     padding: 30px 60px;
     text-align: center;
     text-transform: uppercase;
-    border: 3px white solid;
-    background-color: #4c7689;
+    border: 3px #007579 solid;
+    background-color: #0011ff63;
     cursor: pointer;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.6rem;
 }
 .select button.active{
-     background-color: #26414d;
-     border: 3px #a2bdbe solid;
+     background-color: #0011ff2a;
+     border: 3px #007579 solid;
 }
 .login {
     width: 80%;
@@ -85,7 +85,7 @@ body {
 }
 
 i {
-    color: #2d676f;
+    color: #007579;
     font-size: 60px;
     position: absolute;
     top: 50%;
@@ -240,9 +240,9 @@ color:  white;
 }
 
 .przycisk1:hover {
-  background-color: #ffffff;
+  background-color: #126e00;
   border: 2px solid #00af06;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 900;
   padding: 15px;
   margin-top: 1%;
@@ -282,8 +282,8 @@ color:  white;
 }
 
 .przycisk3:hover {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  background-color: #790000;
+  color: rgb(255, 255, 255);
   border: 2px solid  rgb(255, 0, 0); 
   font-weight: 900;
   letter-spacing: 2px;
@@ -294,7 +294,7 @@ color:  white;
 
 .przycisk4 {
   background-color: white;
-  color: black;
+  color: rgb(255, 255, 255);
   border: 2px solid #e7e7e7;
   padding: 15px;
   margin-top: 1%;
@@ -317,6 +317,11 @@ color:  white;
 HTML SCSS JS Result Skip Results Iframe EDIT ON *, *::before, *::after {
 	box-sizing: border-box;
 }
+
+input {
+    color:rgb(255, 255, 255);
+}
+
 .input-sizer {
 	display: inline-grid;
 	vertical-align: center;
@@ -325,6 +330,7 @@ HTML SCSS JS Result Skip Results Iframe EDIT ON *, *::before, *::after {
 	border: solid 1px;
 	padding: 1.25em .5em;
 	margin: 5px;
+    color:rgb(255, 255, 255);
 }
 .input-sizer.stacked {
 	padding: .15em;
@@ -364,7 +370,7 @@ HTML SCSS JS Result Skip Results Iframe EDIT ON *, *::before, *::after {
 	outline: none;
 }
 .input-sizer {
-	box-shadow: 4px 4px 0px #000;
+	box-shadow: 10px 10px 0px #000;
 }
 .input-sizer > span {
 	text-transform: uppercase;
@@ -373,3 +379,32 @@ HTML SCSS JS Result Skip Results Iframe EDIT ON *, *::before, *::after {
 	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
+#toggle{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: -1;
+  }
+  
+  #toggle:checked ~ dialog {
+    display: block;
+  }
+  
+  @keyframes appear {
+    0%{
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  dialog{
+    position: absolute;
+    top: 200px;
+    left: 0;
+	box-shadow: 10px 10px 0px #6b6b6b;
+    animation: appear 350ms ease-in 1;
+    max-width: 500px;
+    background-color: red;
+  }

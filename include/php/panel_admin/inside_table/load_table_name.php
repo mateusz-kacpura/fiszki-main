@@ -3,16 +3,16 @@
 function load_table_name($tabela, $row){                    
         if ($row['flaga'] == 1){
                 echo '
-                   <div id="deaktywuj" name="deaktywuj" class="nowe_slowo">
-                   <div class="select_zestaw_1">
+                   <div class="nowe_slowo">
+                   <div id="deaktywuj" name="deaktywuj"  class="select_zestaw_1">
                    '.$tabela.' 
                     </div> 
                    </div>             
                     ';
         } else {
                 echo '
-                   <div id="aktywuj" name"aktywuj" class="nowe_slowo">
-                   <div class="select_zestaw_0">
+                   <div  class="nowe_slowo">
+                   <div id="aktywuj" name"aktywuj" class="select_zestaw_0">
                    '.$tabela.'</h2>
                     </div> 
                    </div>                  
