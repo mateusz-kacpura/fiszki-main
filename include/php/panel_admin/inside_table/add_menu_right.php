@@ -7,16 +7,16 @@ function add_menu_right($table){
         echo '
         <div class="menu">
            <div class="menubutton"><i class="icon-cog-alt"></i>
-           </div>
+           </div><label class="input-sizer">
            <div class="menu-content"> 
                    <div>
-                    <h1>Operacje na słówkach</h1>'
+                    '
         ;
                     buttons_activate_table($table);
                     add_form($table);
         echo '
                    </div>
-           </div>
+           </div></label>
         </div>'
         ;
 }

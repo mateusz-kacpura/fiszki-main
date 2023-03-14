@@ -16,8 +16,12 @@ function add_form($table){
           <input type="text" onInput="this.parentNode.dataset.value = this.value" size="1" name="dodaj_element3" style="width: 250px">
       </label>
           </br>
+          <label class="input-sizer">
           <input class="przycisk przycisk1" type="submit" name="submit" value="Wyślij">&nbsp;
-      <input class="przycisk przycisk3" type="reset" value="Wyczyść formularz"></form></br>
+          </label>
+          <label class="input-sizer">
+      <input class="przycisk przycisk3" type="reset" value="Wyczyść formularz">
+      </label></form></br>
       
   </div><div class="nowe_slowo">
   <form method="post" action="tryb_edycji.php?zestaw='.$table.'&'.$table.'=wyszukaj">
@@ -26,8 +30,13 @@ function add_form($table){
           <input type="text" onInput="this.parentNode.dataset.value = this.value" size="1" name="slowo" style="width: 250px">
     </label>
       </br>
+      <label class="input-sizer">
           <input class="przycisk przycisk1" type="submit" name="submit" value="Wyślij">&nbsp;
-          <input class="przycisk przycisk3" type="reset" value="Wyczyść formularz"></form>
+      </label>
+      <label class="input-sizer">
+          <input class="przycisk przycisk3" type="reset" value="Wyczyść formularz">
+      </label>
+      </form>
   
   </div>
   <div>

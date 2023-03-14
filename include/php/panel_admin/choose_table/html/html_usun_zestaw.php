@@ -2,13 +2,19 @@
 
 function html_usun_zestaw(){
     // formularz tworzy i definuje zmienną db_name
-    echo' <div></br>
-                <h1>Usuwanie tabel</h1>
+    echo' <div></br><label class="input-sizer">
+                <h1>Usuwanie zestawów</h1>
                 <form action="tryb_wyboru.php?zestaw=usun_zestaw" method="post">
-                    Nazwa usuwanej tabeli: 
-                        <input type="text" name="databasename">
-                        <input class="submit" type="submit" value="Usuń">
-                </form>
+                 
+                    <label class="input-sizer">
+                    <span>NAZWA ZESTAWU: </span>
+                        <input onInput="this.parentNode.dataset.value = this.value" size="1" type="text" name="databasename">
+                    </label>
+                    <label class="input-sizer">
+                    <span> </span>
+                        <input onInput="this.parentNode.dataset.value = this.value" size="1" class="submit" type="submit" value="USUŃ">
+                    </label>
+                </form></label>
           </div>';   
 }
 

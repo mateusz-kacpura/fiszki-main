@@ -13,7 +13,7 @@ function html_choose_table_menu(){
     echo '
     <div class="menu">
     <div class="menubutton"><i class="icon-cog-alt"></i>
-    </div>
+    </div><label class="input-sizer">
     <div class="menu-content"> 
             <div>
                 <h1>Operacje na zestawach</h1>'
@@ -27,7 +27,7 @@ function html_choose_table_menu(){
                 html_wyloguj();
     echo '
             </div>
-    </div>
+    </div></label>
     </div>'
     ;
 }

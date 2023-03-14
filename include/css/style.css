@@ -97,9 +97,9 @@ i {
     position: relative;
     float: left;
     background-color: #0011ff63;
-    width: 90%;
+    width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
