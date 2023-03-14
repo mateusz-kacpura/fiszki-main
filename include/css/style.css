@@ -96,7 +96,7 @@ i {
 .menu-content {
     position: relative;
     float: left;
-    background-color: #407780;
+    background-color: #0011ff63;
     width: 90%;
     height: 100%;
     z-index: 2;
@@ -108,7 +108,7 @@ i {
 .menu-content div{
     flex-basis: 100%;
     text-align: center;
-     border-top: 1px white solid;
+     border-top: 0px white solid;
     font-size: 1.6rem;
     line-height:29px;
 }
@@ -135,11 +135,7 @@ menu-content div:nt{
 .panel.active span:nth-child(2){
     opacity: 1;
 }
-.menu h2{
-    margin: 1px;
-    font-size: 2.0rem;
-     background-color: #26717e;
-}
+
 .menu h1{
     margin: 1px;
     font-size: 2.0rem;

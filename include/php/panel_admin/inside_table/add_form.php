@@ -29,6 +29,12 @@ function add_form($table){
           <input class="przycisk przycisk1" type="submit" name="submit" value="Wyślij">&nbsp;
           <input class="przycisk przycisk3" type="reset" value="Wyczyść formularz"></form>
   
-  </div>';
+  </div>
+  <div>
+  <div class="przycisk przycisk1" type="submit" value="Tak chcę się uczyć każdego słowa z Tego zestawu">Tak chcę się uczyć każdego słowa tego zestawu</div>
+  <div class="przycisk przycisk3" type="submit" value="Dodaj wszystkie wyrażenia do zestawu">Nie chcę się już uczyć słów z tego zestawu</div>
+  </div>
+  
+  ';
 }
 ?>
