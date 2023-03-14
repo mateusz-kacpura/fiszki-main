@@ -40,4 +40,13 @@ function load_word_by_id($table, $row){
         ';                                                                             
     }                                                  
 }
+
+function change_class_form(){
+// placecholder zwruci zmienna x wartoscia w zaleznosci od wartosci flagi ymagane polaczenie pdo
+// styl css trzeba napisac odpowiada przycisk 1
+// 
+}
+function action_change_flag_for_word(){
+
+}
 ?>
