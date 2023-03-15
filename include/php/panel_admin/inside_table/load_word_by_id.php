@@ -49,4 +49,118 @@ function change_class_form(){
 function action_change_flag_for_word(){
 
 }
+
+/*
+relacja z klijentem
+proces obslugi klijenta
+sprzedarz
+
+polsat box Mateusz Kacpura
+W czym mogę pomóc?
+
+dlaczego nie działa dekoder?
+na czym polega problem?
+
+aktywne słuchanie
+
+----> proszę o chwilę cierpliwości
+
+nie wchodzimy klijentowi w słowo
+
+poprawność języka wypowiedzi, nie używamy zdrobnień
+
+staramy się używać języak korzyći
+wzroty grzecznośąciowe
+------> proszę podejść do dekodera
+
+nie używamy takich zwrotów jak 
+----< nie wiem
+----< nie jestem kompetentny
+
+nie uzywamy słow jak przypuszczam
+nie uzywamy słowa w czym jest problem
+
+---> nie ma żadnych zaległości na kontrakcie
+---> zzarządzamy odpowiednio czasem rozmowy, aby teat był wyczerpany
+staramy się wsyztsko wytłumaczyć klijentowi
+
+-----> proszę o chwilę cieepliwości co 30 sekund
+
+entuzjazm zaangarzowanie
+-----> rozmuem
+
+radzenie sobie z obiekcjami
+kontrulujemy emocje
+
+konsekwentnie i stanowczo prowadzimy rozmowę
+
+klijenta należy uspokoić
+im klijent mówi głośniej to my mówimy ciszej
+
+na zakonczenie rozmowy
+czy w czyms jeszcze moge pomóc
+
+zakoczenie rozmowy -----------
+do usłyszenia
+
+
+--------------------------------------
+
+uwierzytelnienie na poczatku kazdej rozmowy
+poproszę numer pesel
+poproszę numer karty
+poproszę numer kontraktu
+
+numer
+cp 699 00 8888 numer do dzialu windyfikacji
+
+czy można umowe rozwiązać?
+tak z jednomiesięcznym okresem wypowiedzenia
+
+
+odszukac 
+czas trwania umowy
+
+nie łączymy zgłoszeń windyfikacyjnym 
+ze zgłoszeniami informacyjnymi
+
+czy mógłby Pan mnie nie obrażać?
+w związku z tym, że moja prośba nie została
+zrealizowana, jestem zmuszony zakończyć połączenie
+
+osobie trzeciej nie należy udzielać informacji z konkraktu
+
+<-----------    --   ---   --  ---  -- ---------->
+
+proces sprzedarzowy
+najważniejsze jest utzrymanie umowy na telewizję
+drugim standardem jest utrzymanie umowy na internet
+
+transfer do plusa w celu przedstawienia oferty na internet
+
+czy przekierować Pana do Plusa w celu przedstawienia oferty 
+na internet
+
+zachęcam do korzystania z aplikacji i polsat box
+
+czy Panele fotowoltaiczne Pana interesują, 
+można obniżyć rachunek za prąd
+
+zachęcam do zajżenia na stronę internetową
+<www class="czystapolska pl"></www>
+
+o aplikacji mówimy zawsze
+
+;'''''''''''''''''''''''.,
+
+Proszę zwrócić uwagę, że za tyle będzie miał Pan aż tyle dostępnych kanałów
+
+Czy jest to dla Pana wszystko jesne i zrozumiałe?
+
+Proszę Pana ja udzielam Panu tylko oferty 
+dotyczącej Polsat Box
+
+Telewizja satelitarn kanały 
+*/
+
 ?>
