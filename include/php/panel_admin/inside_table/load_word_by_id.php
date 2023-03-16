@@ -160,7 +160,7 @@ Czy jest to dla Pana wszystko jesne i zrozumiałe?
 Proszę Pana ja udzielam Panu tylko oferty 
 dotyczącej Polsat Box
 
-Telewizja satelitarn kanały 
+Telewizja satelitarna kanały 
 */
 
 ?>
