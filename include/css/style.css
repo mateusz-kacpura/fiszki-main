@@ -65,19 +65,16 @@ body {
     width: 100%;
     height:  100vh;
     position: absolute;
-    left: 90%;/*90*/
+    left: 0%;/*90*/
     top: 0%;
 }
 
 .menu.active {
-    left: 0%;
-}
-
-.menubutton {
+    left: 0;
     position: relative;
     float: left;
     width: 10%;
-    height: 150px;
+    height: 100%;
     background-color: #ffffff;
     -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
     clip-path: polygon(100% 0, 0 50%, 100% 100%);
@@ -96,7 +93,7 @@ i {
 .menu-content {
     position: relative;
     float: left;
-    background-color: #0011ff63;
+    background-color: #0011ff;
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -325,7 +322,6 @@ input {
 	position: relative;
 	border: solid 1px;
 	padding: 1.25em .5em;
-	margin: 5px;
     color:rgb(255, 255, 255);
 }
 .input-sizer.stacked {
@@ -404,3 +400,26 @@ input {
     max-width: 500px;
     background-color: red;
   }
+
+  /* kontakt telefoniczny do kierownika/przydzial osob do odsluchiwania naszych rozmów/ wybór kierownika jeszcze nastapi
+  /* 56 663 34 33 - telefon na podest / wszystko zglaszamy na ten telefon na podest / przekazanie godzin - na wlasna odpowiedzialność 
+  /* karta murti soprt i zwrot 60 zł miesięcznie 
+  /* multi sport plus wejscia wiele razy dziennie
+  /* multi sport to wejści tylko raz dziennie albo basen albo siłownia
+  /* w olendrze mozna sie odbyv wiele razy 
+  /* zmiany swiateczne 8,9,10 kwietnia - 14 godzin (teryfa ulgowa)
+  /* 21 dni w roku urlopu bezplatnych w przypadku umowy zlecenie
+  /* 21 dni w roku urlop platny w przypadku umowy na firme
+  /* mozna przelozyc dni dyspozycji tylko w przypadku okazania planu zajec
+  /* zmiany kupno sprzedarzy zglosic na podescie sprzedac, nalezy zglosic zamiane
+  /* spóźnienie do 15 minut, należy zgłosić telefonicznie
+  /* kupno zmian blikiem
+  /* nieobecnosc powinna byc potwierdzona L4 
+  /* zglaszamy te sprawy przed godziną 20:00 poprzedniego dnia
+  /* nocki są 12 godzinne
+  /* nabór następuje co jakiś czas/ rekrutuje się tam tylko doświadczonych pracowników
+  /* mozna się dopisać na 5 gogdzin lub wicej liczy sie do parypetu
+  /* swój grafik mamy op zalogowaniu sie do ccti na miesiac bierzacy, albo na kolejny
+  /* mamy sprawdzac jakie godziny mamy zaakceptowane na liscie obecnosci/ przycisk pauza
+  /* spoznienia sa do 3 godzin z waznego powodu jak np. wypadek, od razu zgloszone do kordynatora
+  /* 
