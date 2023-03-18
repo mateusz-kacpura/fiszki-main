@@ -3,7 +3,7 @@
 function html_exportuj_baze_danych(){
     
     echo '<div class="import" ><form action="tryb_wyboru.php?zestaw=exportuj_baze_danych" method="post" name="upload_excel" enctype="multipart/form-data">
-                <fieldset>
+               
                  <!-- Form Name -->
                  <label class="input-sizer">
                  <legend>Exportuj dane do pliku CSV </legend>
@@ -15,7 +15,7 @@ function html_exportuj_baze_danych(){
                         </label>
                           </div>
                       </div>
-               </label></fieldset>                    
-          </form></div>';
+               </label>                
+          </form></br></div>';
 }
 

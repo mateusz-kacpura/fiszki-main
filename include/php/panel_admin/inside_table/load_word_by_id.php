@@ -15,7 +15,7 @@ function load_word_by_id($table, $row){
     if ($flaga==1){
     $id = $row['id'];
     
-    echo '<div class="arkusz">';
+    echo '<div class="arkus">';
     
     echo '
         <div class="edytuj">
@@ -36,7 +36,8 @@ function load_word_by_id($table, $row){
         <input type="submit" name="submit" class="przycisk przycisk1" value="Edytuj!"></form>
 
         <form method="post" style="display: inline-block" action="tryb_edycji.php?zestaw='.$table.'&'.$table.'=usun&id='.$row['id'].'">
-        <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!"></form></div></div>
+        <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!"></form></div>
+        </div>
         ';                                                                             
     }                                                  
 }
