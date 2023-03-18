@@ -1,10 +1,10 @@
 <?php
 
 function load_table_name($tabela, $row){                    
-        if ($row['flaga'] == 1){
+        if ($row['flaga'] == 0){
                 echo '
                    <div class="nowe_slowo">
-                   <div id="deaktywuj" name="deaktywuj"  class="select_zestaw_1">
+                   <div id="deaktywuj" name="deaktywuj"  class="select_zestaw_0">
                    '.$tabela.' 
                     </div> 
                    </div>             
@@ -12,7 +12,7 @@ function load_table_name($tabela, $row){
         } else {
                 echo '
                    <div  class="nowe_slowo">
-                   <div id="aktywuj" name"aktywuj" class="select_zestaw_0">
+                   <div id="aktywuj" name"aktywuj" class="select_zestaw_1">
                    '.$tabela.'</h2>
                     </div> 
                    </div>                  
