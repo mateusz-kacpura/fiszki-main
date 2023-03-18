@@ -28,7 +28,7 @@ if(!isset($pdo)){
     
 load_isset_table($tabela, $pdo); 
 
-add_menu_right($tabela);
+// add_menu_right($tabela); powoduje błąd
 
 navigate_inside_table($tabela, $pdo);
 
