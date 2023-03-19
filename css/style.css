@@ -400,6 +400,61 @@ input {
     background-color: red;
   }
 
+  .box-sizer {
+	display: inline-grid;
+	vertical-align: center;
+	align-items: center;
+	position: relative;
+	border: solid 1px;
+	padding: 1.25em .5em;
+    color:rgb(255, 255, 255);
+}
+.box-sizer.stacked {
+	padding: .15em;
+	align-items: stretch;
+}
+.box-sizer.stacked::after, .box-sizer.stacked input, .box-sizer.stacked textarea {
+	grid-area: 2 / 1;
+}
+.box-sizer::after, .box-sizer input, .box-sizer textarea {
+	width: auto;
+	min-width: 200px;
+	grid-area: 1 / 2;
+	font: inherit;
+	padding: 0.25em;
+	margin: 0;
+	resize: none;
+	background: none;
+	appearance: none;
+	border: none;
+}
+.box-sizer span {
+	padding: 0.25em;
+}
+.box-sizer::after {
+	visibility: hidden;
+	white-space: pre-wrap;
+}
+.box-sizer:focus-within {
+	outline: solid 1px blue;
+	box-shadow: 4px 4px 0px blue;
+}
+.box-sizer:focus-within > span {
+	color: blue;
+}
+.box-sizer:focus-within textarea:focus, .box-sizer:focus-within input:focus {
+	outline: none;
+}
+.box-sizer {
+	box-shadow: 10px 10px 0px #000;
+}
+.box-sizer > span {
+	text-transform: uppercase;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
   /* kontakt telefoniczny do kierownika/przydzial osob do odsluchiwania naszych rozmów/ wybór kierownika jeszcze nastapi
   /* 56 663 34 33 - telefon na podest / wszystko zglaszamy na ten telefon na podest / przekazanie godzin - na wlasna odpowiedzialność 
   /* karta murti soprt i zwrot 60 zł miesięcznie 
