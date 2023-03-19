@@ -25,10 +25,14 @@ $tabela = filtruj($_GET['zestaw']);
 if(!isset($pdo)){
         echo "<h1>Nie można zrealizować połączenia z żadną bazą danych</h1>";
 }
-    
+
 load_isset_table($tabela, $pdo); 
 
-// add_menu_right($tabela); powoduje błąd
+add_menu_right($tabela);
+
+echo '<div class="arkus">';
+    
+load_add_word($tabela, $pdo);
 
 navigate_inside_table($tabela, $pdo);
 

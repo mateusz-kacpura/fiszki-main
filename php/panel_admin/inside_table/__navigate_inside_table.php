@@ -48,6 +48,12 @@ case 'deaktywuj':
 deactive_table($tabela, $pdo);
     
 break;
+
+case 'edit_flag':
+
+edit_flag($tabela, $pdo);
+        
+break;
                               
 default:
 

@@ -14,7 +14,6 @@ function load_word_by_id($table, $row){
 
     if ($flaga==1){
     $id = $row['id'];
-    
     echo '<div class="arkus">';
     
     echo '
@@ -32,11 +31,17 @@ function load_word_by_id($table, $row){
         <span> </span>
         <input type="text" name="c'.$id.'" onInput="this.parentNode.dataset.value = this.value" size="1" placeholder="Przykładowe zdanie" value="'.$row['zdanie'].'">
         </label>
-        <input type="submit" name="c'.$id.'" placeholder="deflaut" class="przycisk przycisk2" value="'.$row['flaga'].'">
         <input type="submit" name="submit" class="przycisk przycisk1" value="Edytuj!"></form>
 
+        <form method="post" style="display: inline-block" action="tryb_edycji.php?zestaw='.$table.'&'.$table.'=edit_flag&id='.$row['id'].'">
+        <input type="submit" name="c'.$id.'" placeholder="deflaut" class="przycisk przycisk'.$row['flaga'].'" value="'.$row['flaga'].'">
+        </form>
+
         <form method="post" style="display: inline-block" action="tryb_edycji.php?zestaw='.$table.'&'.$table.'=usun&id='.$row['id'].'">
-        <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!"></form></div>
+        <input type="submit" name="submit" class="przycisk przycisk3" value="Usuń!">
+        </form>
+
+        </div>
         </div>
         ';                                                                             
     }                                                  

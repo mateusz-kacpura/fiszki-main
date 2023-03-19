@@ -198,6 +198,26 @@ color:  white;
   transition-duration: 0.4s;
   cursor: pointer;
 }
+.przycisk0 {
+    color: rgb(255, 255, 255); 
+    border: 2px solid #ffffff;
+    background-color: rgb(255, 0, 0); 
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 15px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.przycisk0:hover {
+    background-color: #00af06;
+    border: 2px solid #ffffff;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    padding: 15px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 
 .przycisk1 {
     

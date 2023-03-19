@@ -9,8 +9,10 @@ require_once "buttons_activate_table.php";
 require_once "deactive_table.php";
 require_once "delete_table_word.php";
 require_once "delete_table.php";
+require_once "edit_flag.php";
 require_once "edit_table_row.php";
 require_once "filter.php";
+require_once "load_add_word.php";
 require_once "load_fishcards_all.php";
 // require_once "load_table_words.php"; plik powoduje wywolonaie echo na topie strony
 require_once "load_table_name.php";

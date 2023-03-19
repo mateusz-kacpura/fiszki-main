@@ -11,7 +11,7 @@ function add_menu_right($table){
                     '
         ;
                     buttons_activate_table($table);
-                    add_form($table);
+                    //add_form($table); // blad
         echo '
                    </div>
            </div><div><center>ZESTAW</center></div>
