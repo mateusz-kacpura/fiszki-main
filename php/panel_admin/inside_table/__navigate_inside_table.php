@@ -54,6 +54,18 @@ case 'edit_flag':
 edit_flag($tabela, $pdo);
         
 break;
+
+case 'edit_flag_all_on_1':
+
+    edit_flag_all_on_1($tabela, $pdo);
+                              
+break;
+
+case 'edit_flag_all_on_0':
+
+    edit_flag_all_on_0($tabela, $pdo);
+                              
+break;
                               
 default:
 

@@ -1,3 +1,5 @@
+<script src="js/panel_admin/inside_table/action_click_activate_all_word.js"></script>
+<script src="js/panel_admin/inside_table/action_click_deactivate_all_word.js"></script>
 <script src="js/panel_admin/inside_table/action_click_activate_the_word_set.js"></script>
 <script src="js/panel_admin/inside_table/action_click_deactivate_the_word_set.js"></script>
 <script src="js/panel_admin/inside_table/action_click_menu_button.js"></script>
