@@ -25,7 +25,7 @@
         try
         { 
             $table = $_POST['table'];
-            $querty = "SELECT * FROM $table";
+            $querty = "SELECT * FROM $table WHERE `flaga` = '1'";
             $liczba = $pdo -> query($querty);
             while ($row = $liczba->fetch()) 
             {
