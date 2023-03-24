@@ -29,7 +29,7 @@
             $liczba = $pdo -> query($querty);
             while ($row = $liczba->fetch()) 
             {
-                echo '<script>array1.push("'.$row['v1'].'");array2.push("'.$row['v2'].'");weight.push("'.$row['weight'].'")</script>';
+                echo '<script>array1.push("'.$row['v1'].'");array2.push("'.$row['v2'].'");id.push("'.$row['id'].'")</script>';
             }
         }
         catch(PDOException $e)
