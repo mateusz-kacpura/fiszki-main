@@ -1,4 +1,5 @@
 <?php
+
 function load_word_by_id($table, $row){
     $flaga = 1;
 

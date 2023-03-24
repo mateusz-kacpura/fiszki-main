@@ -4,11 +4,8 @@ require_once "filter.php";
 
 function search_table_word($table, $pdo){
 
-    $angielski = 'v1';
-    $polski = 'v2';
-    $przyklad = 'weight';
-    $zdanie = 'zdanie';
-    $flaga_baza = 'flaga';
+    $row_ang = 'v1';
+    $row_pl = 'v2';
 
     $slowo = filtruj($_POST['slowo']);
 
@@ -19,7 +16,7 @@ function search_table_word($table, $pdo){
 
     try
     {
-    $zapytanie = "SELECT * FROM $table WHERE $angielski LIKE '$slowo' OR $polski LIKE '$slowo'";            
+    $zapytanie = "SELECT * FROM $table WHERE $row_ang LIKE '$slowo' OR $row_pl LIKE '$slowo'";            
     $liczba = $pdo ->query($zapytanie) or die('Błąd zapytania');
     $wykonanie = $pdo->prepare($zapytanie);
     $wykonanie->execute();

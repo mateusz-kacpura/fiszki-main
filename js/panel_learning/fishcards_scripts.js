@@ -5,7 +5,7 @@
 
 let array1=[]
 let array2=[]
-let weight=[]
+let id=[];
 
 $(document).ready(function() {
     $('.select button').click(function(){
@@ -13,13 +13,47 @@ $(document).ready(function() {
         console.log(this.classList.add('active'))
         array1=[];
         array2=[];
-        weight=[];
+        id=[];
         const table=this.innerHTML
         $('.panel').load('././php/panel_learning/load_table_fishcards.php',{
             table:table
         })
     })
 })
+
+$('.przycisk przycisk1').click(function() {
+    let select_database = $("input[name=word_operation]:checked").val()
+    let value1 = $("input[name=update-v1]").val()
+    let value2 = $("input[name=update-v2]").val()
+    let id = $("input[name=update-id]").val()
+    console.log("BASE " + select_database + " VALUE1" + value1 + "VALUE2" + value2 + " ID" + id);
+    console.log("opbirz");
+})
+
+/*  // funkcja przekieruje do pliku ktory zmieni dla konkretnego id slowa jego flagę
+$(document).ready(function(){
+    $('.przycisk przycisk1').click(function(){
+      let queryString = window.location.search;
+      let urlParams = new URLSearchParams(queryString);
+      let zestaw = urlParams.get('zestaw');
+      load('././php/panel_learning/edit_flag_set_1.php'), {
+        `
+      }  // plik  jeszcze nie istenieje nalezy przekazac zmienne array1
+    });
+});
+*/
+
+/*  // funkcja przekieruje do pliku ktory zmieni dla konkretnego id slowa jego flagę
+$(document).ready(function(){
+    $('.przycisk przycisk3').click(function(){
+      let queryString = window.location.search;
+      let urlParams = new URLSearchParams(queryString);
+      let zestaw = urlParams.get('zestaw');
+      load('././php/panel_learning/edit_flag_set_0.php');
+      return false;
+    });
+});
+*/
 
 //Pokazywanie wybranego słowa//   
 
@@ -120,4 +154,3 @@ $(document).ready(function(){
     return false;
   });
 });
-

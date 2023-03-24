@@ -32,7 +32,13 @@ function dodaj_zestaw($pdo){
         try
         {
             $db_name = $_POST['databasename'];
-            $query = "CREATE TABLE $db_name ( id INT NOT NULL AUTO_INCREMENT ,  v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  weight INT NOT NULL ,    PRIMARY KEY  (id)) ENGINE = InnoDB";
+            $query = "CREATE TABLE $db_name ( id INT NOT NULL AUTO_INCREMENT ,  
+                                              v1 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  
+                                              v2 VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,  
+                                              weight INT NOT NULL ,    
+                                              zdanie VARCHAR(70) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+                                              flaga INT NOT NULL ,    
+                                              PRIMARY KEY  (id)) ENGINE = InnoDB";
             $pdo ->query($query) or die('Błąd zapytania CREATE TABLE');
             $querty = "INSERT INTO info_table (name_table, flaga) VALUES ('$db_name', '0')";
             $pdo ->query($querty) or die('Błąd zapytania INSERT INTO');

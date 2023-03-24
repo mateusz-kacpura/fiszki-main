@@ -12,5 +12,9 @@ function navigate_page($file_name){
         echo "<h2>NAUKA</h2>";
         require_once "./html/head_menu.php";
     }
+    if ($file_name == "przyklad.php"){
+        echo "<h2>TEST</h2>";
+        require_once "./html/head_menu.php";
+    }
 }
 ?>
