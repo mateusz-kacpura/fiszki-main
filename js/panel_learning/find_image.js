@@ -9,21 +9,21 @@
   const https = require('https');
   const path = require('path');
 
-  const word = "";
-  const angClasses = ["ang0", "ang1", "ang2", "ang3", "ang4", "ang5"]; // stąd pobieram słówko
-  const imgClasses = ["img0", "img1", "img2", "img3", "img4", "img5"]; // tutaj wyświetlam zdjęcie na stronie
+  let word = "";
+  let angClasses = ["ang0", "ang1", "ang2", "ang3", "ang4", "ang5"]; // stąd pobieram słówko
+  let imgClasses = ["img0", "img1", "img2", "img3", "img4", "img5"]; // tutaj wyświetlam zdjęcie na stronie
   const urlPath = 'https://www.ang.pl/img/slownik/'; // internetowa ścieżka zdjęcia jeśli istnieje pobierze do folderu folderPath
   const folderPath = './words/img'; // ścieżka zdjęcia na dysku
 
-  for (const i = 0; i < angClasses.length; i++) {
-    const angElements = $("." + angClasses[i]);
-    const imgElements = $("." + imgClasses[i]);
+  for (let i = 0; i < angClasses.length; i++) {
+    angElements = $("." + angClasses[i]).text();
+    imgElements = $("." + imgClasses[i]).text();
     angElements.each(function() {
       word += $(this).html();
       word.replace(/\s+/g, '+'); // jeśli znajdzie spację zamieni na +
-      const fileName = word+'.jpg';
-      const filePath = path.join(folderPath, fileName);
-      const fileUrl = urlPath+word+'.jpg';
+      let fileName = word+'.jpg';
+      let filePath = path.join(folderPath, fileName);
+      let fileUrl = urlPath+word+'.jpg';
       
       fs.access(filePath, (err) => {
         if (err) {

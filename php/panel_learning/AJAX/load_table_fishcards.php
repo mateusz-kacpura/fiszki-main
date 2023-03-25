@@ -1,6 +1,6 @@
 <?php
 // https://stackoverflow.com/questions/15757750/how-can-i-call-php-functions-by-javascript
-
+/*
 require_once "../load_table_fishcards.php";
 
 $table = $_POST["Txt_Nombre"];
@@ -12,4 +12,6 @@ switch($_POST["functionname"]){
         load_table_fishcards($table, $pdo);
         break;      
 } 
+
+*/
 ?>

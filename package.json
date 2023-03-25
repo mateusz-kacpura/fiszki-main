@@ -1,0 +1,17 @@
+{
+  "name": "licenciat_fiszki-main",
+  "version": "1.0.0",
+  "description": "Wersja aplikacji z podzielonym panelem administracyjnym\r 1. Ta wersja obejmuje możliwość zarządzania wieloma zestawami i ich edycje poprzez dodanie nowych słówek, ich aktualizacje, lub usunięcie.\r 2. Panel nauki, który losuje słówka  i odtwarza fonetyczną wymowę słowa pobierając nagranie z serweru diki\r 3. Eksport nowych tabel z pliku csv",
+  "main": "jquery.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
