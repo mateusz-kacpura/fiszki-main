@@ -69,13 +69,25 @@
   text-align: center;
 }
 
-.ang0correct-answer .ang1correct-answer .ang2correct-answer .ang3correct-answer .ang4correct-answer .ang5correct-answer{
-  width: 200px;
-  height: 50px;
-  text-align: center;
+/* Style dla div-ów "word" */
+.word0.checked, .word1.checked, .word2.checked, .word3.checked, .word4.checked, .word5.checked  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: greenyellow; 
 }
 
-
+/* Style dla div-ów "word" */
+.word0.wrong, .word1.wrong, .word2.wrong, .word3.wrong, .word4.wrong, .word5.wrong  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: red; 
+}
 
 </style>
 
@@ -302,6 +314,8 @@ function loadData() {
             if(data[i].flaga===0){
               let word = data[i].ang;
               $('.ang'+i+'.correct-answer').removeClass('correct-answer').addClass('ang'+i); // działa poprawnie
+              $('.word'+i+'.checked').removeClass('checked').addClass('word'+i); // działa poprawnie
+              $('.word'+i+'.wrong').removeClass('wrong').addClass('word'+i); // działa poprawnie
               replaceAngContent(word, i);
             }
             if (data[i].flaga===1){
@@ -348,21 +362,36 @@ function loadData() {
     randData();
     });
 
-    /*
-    for(var i = 0; i < 6; i++){
-        // Sprawdzamy, czy istnieje element z klasą ".ang"+i+".correct-answer"
-      if ($(".ang"+i+".correct-answer").length > 0) {
-        console.log("Element z klasą "+".ang"+i+".correct"+" correct' istnieje na stronie.");
-        // Wywołanie funkcji Ajax po kliknięciu na element z klasą ".ang"+i+".correct-answer"
-          $(".ang"+i+".correct-answer").click(function() {
-          loadData();
-          delayExecution();
-          load_img();
-        });
+    for(let i = 0; i < 6; i++){
+      // znajdź wszystkie elementy o klasie 'word'
+      const wordEls = document.querySelectorAll('.word'+i);
+
+      // dodaj nasłuchiwanie na kliknięcie dla każdego elementu 'word'
+        wordEls.forEach(function(wordEl) {
+        wordEl.addEventListener('click', handleClick);
+      });
+    }
+
+    // funkcja, która będzie wywoływana po kliknięciu
+    function handleClick() {
+      const correctEl = this.querySelector('.correct-answer');
+      if (correctEl) {
+        if (this.classList.contains('checked')) {
+          // jeśli kliknięty element ma już klasę 'checked' i zawiera element o klasie 'correct-answer',
+          // to wywołaj funkcję randData()
+          randData();
+        } else {
+          // jeśli kliknięty element zawiera element o klasie 'correct-answer',
+          // to dodaj klasę 'checked'
+          this.classList.add('checked');
+        }
       } else {
-        
+        // jeśli kliknięty element nie zawiera elementu o klasie 'correct-answer',
+        // to dodaj klasę 'wrong'
+        this.classList.add('wrong');
       }
-    } */
+    }
+
 });
 </script>
 
