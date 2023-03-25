@@ -389,6 +389,8 @@ function loadData() {
               replaceAngContent(word, i);
             }
             if (data[i].flaga===1){
+              $('.word'+i+'.checked').removeClass('checked').addClass('word'+i); // działa poprawnie
+
               // znajdujemy element z klasą "ang"
               let element = document.querySelector(".ang" + i);
 
