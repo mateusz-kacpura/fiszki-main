@@ -117,7 +117,7 @@ select_table_by_flag_true($pdo);
 <div class="test">
   <div class="my_word">Przykład</div>
   <div class="row">
-    <div class="word0">
+    <div class="word0" id="myAudio">
         <div class="top">
             <div class="img0"><img scr=""></div>
         </div>
@@ -125,7 +125,7 @@ select_table_by_flag_true($pdo);
             <div class="ang0"></div>  
         </div>
     </div>
-    <div class="word1">
+    <div class="word1" id="myAudio">
         <div class="top">
             <div class="img1"><img scr=""></div>
         </div>
@@ -133,7 +133,7 @@ select_table_by_flag_true($pdo);
             <div class="ang1"></div>  
         </div>
     </div>
-    <div class="word2">
+    <div class="word2" id="myAudio">
         <div class="top">
             <div class="img2"><img scr=""></div>
         </div>
@@ -143,7 +143,7 @@ select_table_by_flag_true($pdo);
     </div>
  </div>
  <div class="row">
-    <div class="word3">
+    <div class="word3" id="myAudio">
         <div class="top">
             <div class="img3"><img scr=""></div>
         </div>
@@ -151,7 +151,7 @@ select_table_by_flag_true($pdo);
             <div class="ang3"></div>  
         </div>
     </div>
-    <div class="word4">
+    <div class="word4" id="myAudio">
         <div class="top">
             <div class="img4"><img scr=""></div>
         </div>
@@ -159,7 +159,7 @@ select_table_by_flag_true($pdo);
             <div class="ang4"></div>  
         </div>
     </div>
-    <div class="word5">
+    <div class="word5" id="myAudio">
         <div class="top">
             <div class="img5"><img scr=""></div>
         </div>
@@ -199,6 +199,75 @@ function replaceImg(PATH, i) {
   imgDiv.replaceChild(img2, img1); // zamieniamy img1 na img2
 }
 
+let audio = null; // deklarujemy zmienną, w której będziemy przechowywać obiekt Audio
+
+function playSoundOnce(path) {
+  //audio = document.getElementById("myAudio"); // pobranie starym obiektu audio
+  //audio.pause(); // zatrzymanie odtwarzania
+  //audio.src = path;   
+  // funkcja przyjmuje ścieżkę do dźwięku jako argument
+  // audio = document.getElementById("myAudio"); 
+  if (audio !== null) { // sprawdzamy, czy dźwięk jest już odtwarzany
+    audio.pause(); // jeśli tak, przerywamy odtwarzanie
+    audio.currentTime = 0; // ustawiamy czas odtwarzania na początek
+  }
+
+  audio = new Audio(path); // tworzymy nowy obiekt Audio z podaną ścieżką
+  audio.src = path;
+  audio.load();
+  audio.pause();
+  audio.currentTime = 0;
+  audio.play(); // odtwarzamy dźwięk
+  audio.remove();
+}
+
+// funkcja wysyła i odbiera ścieżki z pliku load_img.php
+function load_audio() {
+        let word = "";
+        for (let i = 0; i < 5; i++) {
+            word = $('.ang0').html();
+                $.ajax({
+                    url: 'php/panel_learning/AJAX/load_audio.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {data: JSON.stringify(word)}, // koduje zmienną table na format JSON, abym mógł ją przesłać za pomocą AJAX do PHP
+                    success: function(data) {
+                    // wyświetlenie danych w klasach
+                    for (let i = 0; i < 6; i++) {
+                      let audioPath = data[i];
+                      $('.word'+i).each(function() {
+                          $(this).removeAttr('data-audio-path');
+                          $(this).attr('data-audio-path', audioPath);
+                      });
+                      $('.word'+i).click(function() {
+                        // let audioPath = $(this).data('data-audio-path');
+                        // console.log('audioPath');
+                        playSoundOnce(audioPath);
+                      });
+                    }
+                    },
+                    error: function(xhr, status, error) {
+                    var errorMessage = 'Wystąpił błąd: ';
+                    if (xhr.status === 0) {
+                    errorMessage += 'Nie można połączyć się z serwerem.';
+                    } else if (xhr.status === 404) {
+                    errorMessage += 'Nie znaleziono żądanego pliku.';
+                    } else if (xhr.status === 500) {
+                    errorMessage += 'Wewnętrzny błąd serwera.';
+                    } else if (error === 'parsererror') {
+                    errorMessage += 'Nie można przetworzyć odpowiedzi JSON.';
+                    } else if (error === 'timeout') {
+                    errorMessage += 'Przekroczono czas oczekiwania na odpowiedź serwera.';
+                    } else if (error === 'abort') {
+                    errorMessage += 'Anulowano żądanie.';
+                    } else {
+                    errorMessage += 'Nieznany błąd: ' + xhr.responseText;
+                    }
+                    console.log(errorMessage);
+                    }
+                });
+        }
+    }
 
 // funkcja wysyła i odbiera ścieżki z pliku load_img.php
 function load_img() {
@@ -274,6 +343,7 @@ function randData() {
         errorMessage += 'Nieznany błąd: ' + xhr.responseText;
         loadData();
         load_img();
+        load_audio();
         }
         console.log(errorMessage);
         }
