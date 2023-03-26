@@ -3,7 +3,7 @@
 require_once "../../../polaczeniePDO.php";
 require_once "../../panel_admin/inside_table/load_table_name.php";
 
-$table = json_decode($_GET['data']);
+$table =  json_decode($_GET['data']); // 'word_of_day';
 
 function rand_numbers() {
   // Tworzenie listy z liczbami od 1 do 6
@@ -22,12 +22,6 @@ if(!isset($_SESSION))
   }
 
   $flaga = 1;
-
-  if (!isset($_GET['data']))
-  {
-      echo "Zabezpieczenie przed nadużyciem load_word_fishcards.php";
-      $flaga = 0;
-  }
 
   if(load_isset_table_not_return($table, $pdo) != $table){
       echo "Nie udało się załadować fiszek";
@@ -96,7 +90,6 @@ if(!isset($_SESSION))
     }
 
     if ($tableExists) {
-        echo "Tabela 'slownik' już istnieje więc nadpisuję ją nowymi danymi";
         $i = 1;
         foreach ($rows as $row) {
           $id = $i;
@@ -127,7 +120,6 @@ if(!isset($_SESSION))
         )";
         try {
             $pdo->exec($sql);
-            echo "Tabela 'slownik' została utworzona";
             $i = 1;
             foreach ($rows as $row) {
               $id = $i;
@@ -142,12 +134,18 @@ if(!isset($_SESSION))
               $stmt->bindParam(':flaga', $flaga, PDO::PARAM_INT);
               $stmt->execute();
             }
-            echo "Tabela 'slownik' została wypełniona danymi";
         } catch(PDOException $e) {
             echo "Błąd podczas tworzenia tabeli: " . $e->getMessage();
         }
     }
   }
 
+  $data = json_encode($rows, JSON_UNESCAPED_UNICODE);
+
+  // Ustaw nagłówek Content-Type, aby przeglądarka widziała, że to dane JSON
+  header('Content-Type: application/json; charset=utf-8');
+
+  // Wyślij dane JSON do przeglądarki
+  echo $data;
 ?>
 

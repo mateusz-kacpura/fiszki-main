@@ -64,8 +64,8 @@
 
 /* Style dla div-ów "ang" */
 .ang0, .ang1, .ang2, .ang3, .ang4, .ang5 {
-  width: 200px;
-  height: 50px;
+  width: 300px;
+  height: 100px;
   text-align: center;
 }
 
@@ -177,9 +177,8 @@ select_table_by_flag_true($pdo);
 <?php require_once "php/panel_learning/html/tryby_nauki.php"; ?>
 
 </body>
+
 <?php include('js\panel_learning\__scripts_routes.php') ?>
-
-
 
 </html>
 <script>
@@ -200,6 +199,7 @@ function replaceImg(PATH, i) {
 }
 
 let audio = null; // deklarujemy zmienną, w której będziemy przechowywać obiekt Audio
+let played_audio = new Set();
 
 function playSoundOnce(path) {
   //audio = document.getElementById("myAudio"); // pobranie starym obiektu audio
@@ -211,7 +211,15 @@ function playSoundOnce(path) {
     audio.pause(); // jeśli tak, przerywamy odtwarzanie
     audio.currentTime = 0; // ustawiamy czas odtwarzania na początek
   }
-
+  if (!played_audio.has(path)) {
+    // odtwarzanie elementu audio
+    console.log(`Odtwarzanie pliku audio: ${path}`);
+    // dodanie elementu do zbioru odtworzonych
+    played_audio.add(path);
+  } else {
+    console.log(`Plik audio ${path} został już odtworzony.`);
+    audio.remove();
+  }
   audio = new Audio(path); // tworzymy nowy obiekt Audio z podaną ścieżką
   audio.src = path;
   audio.load();
@@ -222,7 +230,7 @@ function playSoundOnce(path) {
 }
 
 // funkcja wysyła i odbiera ścieżki z pliku load_img.php
-function load_audio() {
+function download_audio() {
         let word = "";
         for (let i = 0; i < 5; i++) {
             word = $('.ang0').html();
@@ -235,6 +243,32 @@ function load_audio() {
                     // wyświetlenie danych w klasach
                     for (let i = 0; i < 6; i++) {
                       let audioPath = data[i];
+                                        /*  // Znajdź elementy z klasą "audio"
+                                          const audioElements = document.querySelectorAll('.audio');
+
+                                          // Sprawdź, czy jakiekolwiek elementy posiadają klasę "audio"
+                                          if (audioElements.length > 0) {
+                                            // Wykonaj odpowiedni kod, jeśli elementy posiadają klasę "audio"
+                                            console.log('Jest co najmniej jeden element z klasą "audio"');
+
+                                            // Dla przykładu, można wykonać poniższy kod:
+                                            audioElements.forEach(element => {
+                                              // Dla każdego elementu z klasą "audio" dodaj atrybut "autoplay"
+                                              element.setAttribute('autoplay', true);
+                                            });
+                                            $('.word'+i).each(function() {
+                                              console.log('Usuwam parametry audio');
+                                              $(this).removeAttr('data-audio-path');
+                                              $(this).attr('data-audio-path', audioPath);
+                                              $('.word'+i+'.checked').removeClass('audio').addClass('word'+i); // działa poprawnie
+                                              $('.word'+i+'.wrong').removeClass('audio').addClass('word'+i); // działa poprawnie
+                                              $('.word'+i+'.correct-answer').removeClass('audio').addClass('word'+i); // działa poprawnie
+                                            });
+                                          }
+                                          else {
+                                            // Wykonaj odpowiedni kod, jeśli żaden element nie posiada klasy "audio"
+                                            console.log('Nie ma żadnych elementów z klasą "audio"');
+                                          }  */
                       $('.word'+i).each(function() {
                           $(this).removeAttr('data-audio-path');
                           $(this).attr('data-audio-path', audioPath);
@@ -242,6 +276,13 @@ function load_audio() {
                       $('.word'+i).click(function() {
                         // let audioPath = $(this).data('data-audio-path');
                         // console.log('audioPath');
+                                         /* // Znajdź elementy z klasą "checked"
+                                            const checkedElements = document.querySelectorAll('.checked');
+
+                                            // Dodaj klasę "audio" do każdego elementu z klasy "checked"
+                                            checkedElements.forEach(element => {
+                                              element.classList.add('audio');
+                                            }); */
                         playSoundOnce(audioPath);
                       });
                     }
@@ -267,16 +308,14 @@ function load_audio() {
                     }
                 });
         }
-    }
+
+}
 
 // funkcja wysyła i odbiera ścieżki z pliku load_img.php
-function load_img() {
-  delayExecution();
+function download_img() {
         let word = "";
         for (let i = 0; i < 5; i++) {
             word = $('.ang0').html();
-            console.log(i);
-            console.log(word);
                 $.ajax({
                     url: 'php/panel_learning/AJAX/load_img.php',
                     type: 'GET',
@@ -310,13 +349,12 @@ function load_img() {
                     }
                 });
         }
-    }
+}
 
-function randData() {
+function rand() {
       // pobieram zawartość elementu z klasą "active"
       const table = $('.active').html();
       // wyświetl zawartość w konsoli
-      console.log(table);
       $.ajax({
         url: 'php/panel_learning/AJAX/rand_rows.php',
         type: 'GET',
@@ -340,10 +378,7 @@ function randData() {
         } else if (error === 'abort') {
         errorMessage += 'Anulowano żądanie.';
         } else {
-        errorMessage += 'Nieznany błąd: ' + xhr.responseText;
-        loadData();
-        load_img();
-        load_audio();
+        errorMessage += 'Nieznany błąd w funkcji rand pochodzący z pliku php związany z JSON ' + xhr.responseText;
         }
         console.log(errorMessage);
         }
@@ -372,8 +407,7 @@ function replaceAngContentMyWord(newContent) {
   }
 }
 
-function loadData() {
-  delayExecution();
+function loadDb() {
       $.ajax({
         url: 'php/panel_learning/AJAX/load_rows.php',
         type: 'GET',
@@ -390,7 +424,7 @@ function loadData() {
             }
             if (data[i].flaga===1){
               $('.word'+i+'.checked').removeClass('checked').addClass('word'+i); // działa poprawnie
-
+              $('.word'+i+'.wrong').removeClass('wrong').addClass('word'+i); // działa poprawnie
               // znajdujemy element z klasą "ang"
               let element = document.querySelector(".ang" + i);
 
@@ -424,15 +458,149 @@ function loadData() {
         }
         console.log(errorMessage);
         }
-    }); 
+    });
+}
+
+class TimeoutError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'TimeoutError';
+  }
+}
+
+class NetworkError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'NetworkError';
+  }
+}
+
+class SyntaxError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'SyntaxError';
+  }
+}
+
+class TypeError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'TypeError';
+  }
+}
+
+class PromiseRejectionError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'PromiseRejectionError';
+  }
+}
+
+class LoadDataError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'LoadDataError';
+  }
+}
+
+function rand_data() {
+  console.log('Losuję dane...');
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      let data = true; // symulacja wygenerowania danych
+      if (data) {
+        rand();
+        console.log('Udało się doadć wylosowane dane do roboczej bazy danych');
+        resolve();
+      } else {
+        reject(new Error('Wystąpił błąd podczas generowania danych.'));
+      }
+    }, 1000);
+  });
+}
+
+function load_data() {
+  console.log('Ładuję dane...');
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      let loaded = true; // symulacja poprawnego załadowania danych
+      if (loaded) {
+        loadDb();
+        console.log('Udało się załadować wylosowane dane z bazy danych na stronę');
+        resolve();
+      } else {
+        reject(new Error('Wystąpił błąd podczas ładowania danych.'));
+      }
+    }, 1500);
+  });
+}
+
+function load_audio() {
+  console.log('Pobieram pliki audio...');
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      let loaded = true; // symulacja poprawnego załadowania pliku
+      if (loaded) {
+        download_audio();
+        console.log('Udało się pobrać pliki audio');
+        resolve();
+      } else {
+        reject(new Error('Wystąpił błąd podczas ładowania pliku audio.'));
+      }
+    }, 2000);
+  });
+}
+
+function load_img() {
+  console.log('Pobieram pliki graficzne...');
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      var loaded = true; // symulacja poprawnego załadowania pliku
+      if (loaded) {
+        download_img();
+        console.log('Udało się pobrać pliki graficzne');
+        resolve();
+      } else {
+        reject(new Error('Wystąpił błąd podczas ładowania pliku graficznego.'));
+      }
+    }, 3000);
+  });
+}
+
+function executeAsyncFunctions() {
+  rand_data()
+    .then(() => load_data())
+    .then(() => Promise.all([load_audio(), load_img()]))
+    .then(() => {
+      console.log('Funkcje zostały wykonane poprawnie.');
+    })
+    .catch((error) => {
+      if (error instanceof TimeoutError) {
+        console.error('Przekroczono limit czasu podczas ładowania plików:', error);
+      } else if (error instanceof LoadDataError) {
+        console.error('Wystąpił błąd podczas ładowania danych:', error);
+      } else if (error instanceof NetworkError) {
+        console.error('Wystąpił błąd sieciowy:', error);        
+      } else if (error instanceof LoadAudioError) {
+        console.error('Wystąpił błąd podczas ładowania pliku audio:', error);
+      } else if (error instanceof AudioLoadError) {
+        console.error('Wystąpił błąd podczas ładowania obrazka:', error);
+      } else if (error instanceof PromiseRejectionError) {
+        console.error('Wystąpił błąd podczas odrzucania promisa:', error);
+      } else {
+        console.error('Nieznany błąd:', error);
+      }
+    });
 }
 
     // Wywołanie funkcji Ajax po kliknieciu
     $('.select').on('click', function() {
     // Kod, który ma się wykonać po kliknięciu w element o klasie "select"
     console.log('Kliknięto w element o klasie "select"');
-    randData();
+     // asynchroniczne wywoływanie funkcji ////////////////
+       executeAsyncFunctions();
     });
+
 
     for(let i = 0; i < 6; i++){
       // znajdź wszystkie elementy o klasie 'word'
@@ -445,13 +613,13 @@ function loadData() {
     }
 
     // funkcja, która będzie wywoływana po kliknięciu
-    function handleClick() {
+    function handleClick(i) {
       const correctEl = this.querySelector('.correct-answer');
       if (correctEl) {
         if (this.classList.contains('checked')) {
           // jeśli kliknięty element ma już klasę 'checked' i zawiera element o klasie 'correct-answer',
           // to wywołaj funkcję randData()
-          randData();
+          rand_data();
         } else {
           // jeśli kliknięty element zawiera element o klasie 'correct-answer',
           // to dodaj klasę 'checked'
