@@ -210,6 +210,7 @@ function playSoundOnce(path) {
   if (audio !== null) { // sprawdzamy, czy dźwięk jest już odtwarzany
     audio.pause(); // jeśli tak, przerywamy odtwarzanie
     audio.currentTime = 0; // ustawiamy czas odtwarzania na początek
+    audio.remove();
   }
   if (!played_audio.has(path)) {
     // odtwarzanie elementu audio
@@ -461,48 +462,6 @@ function loadDb() {
     });
 }
 
-class TimeoutError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'TimeoutError';
-  }
-}
-
-class NetworkError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'NetworkError';
-  }
-}
-
-class SyntaxError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'SyntaxError';
-  }
-}
-
-class TypeError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'TypeError';
-  }
-}
-
-class PromiseRejectionError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'PromiseRejectionError';
-  }
-}
-
-class LoadDataError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'LoadDataError';
-  }
-}
-
 function rand_data() {
   console.log('Losuję dane...');
   return new Promise(function(resolve, reject) {
@@ -569,25 +528,13 @@ function load_img() {
 
 function executeAsyncFunctions() {
   rand_data()
-    .then(() => load_data())
-    .then(() => Promise.all([load_audio(), load_img()]))
+    //.then(() => load_data())
+    .then(() => Promise.all([load_data(), load_audio(), load_img()]))
     .then(() => {
       console.log('Funkcje zostały wykonane poprawnie.');
     })
     .catch((error) => {
       if (error instanceof TimeoutError) {
-        console.error('Przekroczono limit czasu podczas ładowania plików:', error);
-      } else if (error instanceof LoadDataError) {
-        console.error('Wystąpił błąd podczas ładowania danych:', error);
-      } else if (error instanceof NetworkError) {
-        console.error('Wystąpił błąd sieciowy:', error);        
-      } else if (error instanceof LoadAudioError) {
-        console.error('Wystąpił błąd podczas ładowania pliku audio:', error);
-      } else if (error instanceof AudioLoadError) {
-        console.error('Wystąpił błąd podczas ładowania obrazka:', error);
-      } else if (error instanceof PromiseRejectionError) {
-        console.error('Wystąpił błąd podczas odrzucania promisa:', error);
-      } else {
         console.error('Nieznany błąd:', error);
       }
     });
@@ -619,7 +566,7 @@ function executeAsyncFunctions() {
         if (this.classList.contains('checked')) {
           // jeśli kliknięty element ma już klasę 'checked' i zawiera element o klasie 'correct-answer',
           // to wywołaj funkcję randData()
-          rand_data();
+          executeAsyncFunctions();
         } else {
           // jeśli kliknięty element zawiera element o klasie 'correct-answer',
           // to dodaj klasę 'checked'
