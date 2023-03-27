@@ -362,7 +362,7 @@ function rand() {
         dataType: 'json',
         data: {data: JSON.stringify(table)}, // koduje zmienną table na format JSON, abym mógł ją przesłać za pomocą AJAX do PHP
         success: function() {
-
+          load_audio(); load_img(); load_data();
         },
         error: function(xhr, status, error) {
         var errorMessage = 'Wystąpił błąd: ';
@@ -529,7 +529,7 @@ function load_img() {
 function executeAsyncFunctions() {
   rand_data()
     //.then(() => load_data())
-    .then(() => Promise.all([load_data(), load_audio(), load_img()]))
+    .then(() => Promise.all([]))
     .then(() => {
       console.log('Funkcje zostały wykonane poprawnie.');
     })
