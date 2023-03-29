@@ -89,6 +89,13 @@
   background-color: red; 
 }
 
+.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
 </style>
 
 <?php
@@ -169,16 +176,16 @@ select_table_by_flag_true($pdo);
     </div>
  </div>
 </div>
+<div id="answer-container"></div>
 
-
-<?php require_once "php/panel_learning/html/audio_controls.php" ?>
+<?php //require_once "php/panel_learning/html/audio_controls.php" ?>
              
 
-<?php require_once "php/panel_learning/html/tryby_nauki.php"; ?>
+<?php  require_once "php/panel_learning/html/tryby_nauki.php"; ?>
 
 </body>
 
-<?php include('js\panel_learning\__scripts_routes.php') ?>
+<?php  include('js\panel_learning\__scripts_routes.php') ?>
 
 </html>
 <script>
@@ -187,9 +194,27 @@ $(document).ready(function() {
     function delayExecution() {
     setTimeout(function() {
         // kod do wykonania z opóźnieniem
-    }, 5000); // czas opóźnienia w milisekundach
+    }, 50); // czas opóźnienia w milisekundach
     }
-    
+
+function sentence(){
+  $(document).ready(function(){
+        $.ajax({
+          url: 'php/panel_learning/AJAX/load_sentence.php',
+          type: 'get',
+          dataType: 'json',
+          success: function(result){
+              var ang = result;
+              var centerElement = document.createElement('div');
+              centerElement.classList.add('center');
+              centerElement.innerText = ang;
+              $('#answer-container').html(centerElement);
+          }
+        });
+    });
+}
+
+
 function replaceImg(PATH, i) {
   const imgDiv = document.querySelector('.img'+i); // pobieramy div z klasą img
   const img1 = document.querySelector('.img'+i+' img'); // pobieramy element img1 za pomocą selektora classy div
@@ -362,7 +387,7 @@ function rand() {
         dataType: 'json',
         data: {data: JSON.stringify(table)}, // koduje zmienną table na format JSON, abym mógł ją przesłać za pomocą AJAX do PHP
         success: function() {
-          load_audio(); load_img(); load_data();
+
         },
         error: function(xhr, status, error) {
         var errorMessage = 'Wystąpił błąd: ';
@@ -528,8 +553,8 @@ function load_img() {
 
 function executeAsyncFunctions() {
   rand_data()
-    //.then(() => load_data())
-    .then(() => Promise.all([]))
+    .then(() => load_data())
+    .then(() => Promise.all([load_audio(), load_img(), sentence()]))
     .then(() => {
       console.log('Funkcje zostały wykonane poprawnie.');
     })

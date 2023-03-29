@@ -51,6 +51,7 @@ if(!isset($_SESSION))
           $id = $row["id"];
           $ang = $row["v1"];
           $pl = $row["v2"];
+          $sentence = $row["zdanie"];
 
           // dodanie wylosowanego "id" do tablicy
           $used_ids[] = $id;
@@ -68,7 +69,7 @@ if(!isset($_SESSION))
           $rand_flag[] = $flaga;
 
           // dodanie wiersza do tablicy
-          $rows[] = array("id" => $id, "ang" => $ang, "pl" => $pl, "flaga" => $flaga);
+          $rows[] = array("id" => $id, "ang" => $ang, "pl" => $pl, "flaga" => $flaga, "sentence" => $sentence);
 
         }
       }
@@ -96,8 +97,9 @@ if(!isset($_SESSION))
           $ang = $row['ang'];
           $pl = $row['pl'];
           $flaga = $row['flaga'];
+          $sentence = $row['sentence'];
           $i++;
-          $query = "REPLACE INTO slownik (id, ang, pl, flaga) VALUES (:id, :ang, :pl, :flaga)";
+          $query = "REPLACE INTO slownik (id, ang, pl, flaga, sentence) VALUES (:id, :ang, :pl, :flaga, :sentence)";
       
           try {
               $stmt = $pdo->prepare($query);
@@ -105,6 +107,7 @@ if(!isset($_SESSION))
               $stmt->bindParam(':ang', $ang, PDO::PARAM_STR);
               $stmt->bindParam(':pl', $pl, PDO::PARAM_STR);
               $stmt->bindParam(':flaga', $flaga, PDO::PARAM_INT);
+              $stmt->bindParam(':sentence', $sentence, PDO::PARAM_STR);
               $stmt->execute();
           } catch(PDOException $e) {
               echo "Błąd podczas wypełniania tabeli: " . $e->getMessage();
@@ -116,7 +119,8 @@ if(!isset($_SESSION))
             id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             ang VARCHAR(255) NOT NULL,
             pl VARCHAR(255) NOT NULL,
-            flaga INT(11) NOT NULL
+            flaga INT(11) NOT NULL,
+            sentence VARCHAR(255) NOT NULL,
         )";
         try {
             $pdo->exec($sql);
@@ -126,12 +130,14 @@ if(!isset($_SESSION))
               $ang = $row['ang'];
               $pl = $row['pl'];
               $flaga = $row['flaga'];
+              $sentence = $row['sentence'];
               $i++;
-              $stmt = $pdo->prepare("INSERT INTO slownik (id, ang, pl, flaga) VALUES (:id, :ang, :pl, :flaga)");
+              $stmt = $pdo->prepare("INSERT INTO slownik (id, ang, pl, flaga, sentence) VALUES (:id, :ang, :pl, :flaga, :sentence)");
               $stmt->bindParam(':id', $id, PDO::PARAM_INT);
               $stmt->bindParam(':ang', $ang, PDO::PARAM_STR);
               $stmt->bindParam(':pl', $pl, PDO::PARAM_STR);
               $stmt->bindParam(':flaga', $flaga, PDO::PARAM_INT);
+              $stmt->bindParam(':sentence', $sentence, PDO::PARAM_STR);
               $stmt->execute();
             }
         } catch(PDOException $e) {

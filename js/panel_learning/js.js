@@ -1,4 +1,4 @@
-let text = array1[random_words];
+/* let text = array1[random_words];
         
 text = text.replace(/\s/g, "_");
 text = text.replace("a_", "");
@@ -20,7 +20,9 @@ if(typeof(audioElement) != "undefined" && audioElement !== null) {
 audioElement.currentTime = 0;
 $ ('audio').attr('src', 'https://www.diki.pl//images-common/en/mp3/'+text+'.mp3');
 audioElement.setAttribute('src', 'https://www.diki.pl//images-common/en/mp3/'+text+'.mp3');
-/*dodane oststnio */audioElement.play(); 
+/*dodane oststnio */
+
+/* audioElement.play(); 
 audioElement.addEventListener('ended', function() {
     this.play();
 }, false);
@@ -152,6 +154,7 @@ document.querySelectorAll('.choices.item.highlighted').forEach(function(item) {
     console.error(`Błąd pobierania pliku: ${err.message}`);
   });
 
+  */
 
 
 
