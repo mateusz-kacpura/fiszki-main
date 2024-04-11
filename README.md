@@ -6,7 +6,7 @@ This version includes the ability to manage multiple sets and their editing by a
 
 - The learning panel selects words and plays the phonetic pronunciation of the word by retrieving the recording from the diki server.
 - Export new tables from a CSV file.
-- A game that involves matching flashcards to an image, playing the phonetic pronunciation, and creating a library of audio and image files. Currently, it is a file named example.php.
+- A game that involves matching flashcards to an image, playing the phonetic pronunciation, and creating a library of audio and image files.
 
 ## Application Installation:
 
