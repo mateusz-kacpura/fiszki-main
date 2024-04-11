@@ -1,19 +1,24 @@
-# licenciat_fiszki
-Wersja aplikacji z podzielonym panelem administracyjnym
-1. Ta wersja obejmuje możliwość zarządzania wieloma zestawami i ich edycje poprzez dodanie nowych słówek, ich aktualizacje, lub usunięcie.
-2. Panel nauki, który losuje słówka  i odtwarza fonetyczną wymowę słowa pobierając nagranie z serweru diki
-3. Eksport nowych tabel z pliku csv
-4. Grę, która polega na dopasowaniu fiszek do obrazka, odtwarza wymowę fonetyczną, tworzy bibliotekę plików audio i zdjęć 
-aktualnie jest to plik przyklad.php
+# Application Version with Split Admin Panel
 
-Instalowanie aplikacji:
-1. Zainstalować serwer xampp
-2. Wrzucić pliki do katalogu htdoc
-3. Zaimportować za pomocą phpmyadmin bazę danych fiszki_nauka_slowek.sql
-4. Zalogować się do bazy danych przy użyciu użytkownika root (bez hasła)
+This version includes the ability to manage multiple sets and their editing by adding new words, updating them, or deleting them. 
 
-Domyślne dane do połączenia z bazą danych:
-1. host: 127.0.0.1
-2. user: podaje użytkownik (domyślnie root)
-3. hasło: podaje użytkownik (domyślnie bez hasła)
-4. nazwa bazy danych: fiszki_nauka_słówek formatowanie tekstu utf8
+## Learning Panel
+
+- The learning panel selects words and plays the phonetic pronunciation of the word by retrieving the recording from the diki server.
+- Export new tables from a CSV file.
+- A game that involves matching flashcards to an image, playing the phonetic pronunciation, and creating a library of audio and image files. Currently, it is a file named example.php.
+
+## Application Installation:
+
+1. Install the XAMPP server.
+2. Upload files to the htdocs directory.
+3. Import the fiszki_nauka_slowek.sql database using phpMyAdmin.
+4. Log in to the database using the root user (without a password).
+
+## Default Database Connection Data:
+
+- Host: 127.0.0.1
+- User: Provided user (default is root)
+- Password: Provided user (default is empty)
+- Database Name: fiszki_nauka_słówek, text formatting in UTF-8.
+
